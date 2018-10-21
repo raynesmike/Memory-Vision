@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.LoginController">
+   <children>
+      <BorderPane prefHeight="800.0" prefWidth="800.0">
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <PasswordField fx:id="password" layoutX="417.0" layoutY="455.0" promptText="password" />
+                  <TextField fx:id="username" layoutX="417.0" layoutY="400.0" promptText="username" />
+                  <Text layoutX="274.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username: " wrappingWidth="114.7294921875">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="274.0" layoutY="472.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="114.7294921875">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Text>
+                  <Button fx:id="registerButton" layoutX="381.0" layoutY="582.0" mnemonicParsing="false" text="Register" />
+                  <Button fx:id="loginButton" layoutX="381.0" layoutY="530.0" mnemonicParsing="false" onAction="#Login" prefHeight="25.0" prefWidth="73.0" text="Login" />
+                  <Label fx:id="loginStatus" layoutX="336.0" layoutY="503.0" prefHeight="15.0" prefWidth="167.0" />
+               </children>
+            </AnchorPane>
+         </center></BorderPane>
+   </children>
+</AnchorPane>
