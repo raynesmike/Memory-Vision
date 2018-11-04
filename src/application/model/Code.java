@@ -5,51 +5,61 @@ import java.util.Scanner;
 
 public class Code {
 	private ArrayList<String> codes;
+	private Table table;
 	//public static ArrayList<codes>functions;
+	
 	public Code() {
-		
+		this.codes = null;
+		this.table = new Table();
 	}
 	
-	public ArrayList<String> readCode(String codeString) {
-		ArrayList<String> tokens = new ArrayList<String>();
+	public ArrayList<String> readCode( String codeString ) {
+		ArrayList<String> wholeCode = new ArrayList<String>();
 		Scanner scan = new Scanner(codeString);
-		while(scan.hasNextLine()) {
+		
+		while( scan.hasNextLine() ) {
 			String line = scan.nextLine();
-			tokens.add(line);
-			System.out.println(line);
+			wholeCode.add( line );
+			System.out.println( line );
 		}
-		this.findType(tokens);
-		return tokens;
+		this.findType( wholeCode );
+		
+		return wholeCode;
 	}
 	
-	public void findType(ArrayList<String> tokens) {
-		for (String s: tokens) {
-			String[] words =s.split(" ");
-			switch(words[0]){
+	public void findType( ArrayList<String> wholeCode ) {
+		
+		for ( String line: wholeCode ) {
+			String[] word =line.split(" ");
+			
+			// add the variables being classified.
+			
+			switch(word[0]){
 				case "int":
-					System.out.print(words[0]);
-					Integer.classify(s);
+					System.out.print(word[0]);
+					table.classifyLine(line);
 					break;
 				case "char":
-					System.out.println(words[0]);
+					System.out.println(word[0]);
+					//table.classifyLine(line);
 					break;
 				case "float":
-					System.out.println(words[0]);
+					System.out.println(word[0]);
+					//table.classifyLine(line);
 					break;
 				case "double":
-					System.out.println(words[0]);
+					System.out.println(word[0]);
+					//table.classifyLine(line);
 					break;
 				default: // actions
-				    this.modify(s);
+				    this.table.modify(line);
 					
 				    break;
 				
 			}
 		}
 	}
-	public void modify(String s) {
-		System.out.println(s);
-	}
+
 
 	public ArrayList<String> getCodes() {
 		return codes;

@@ -29,13 +29,13 @@ public class MemoryMapController implements Initializable{
     private Button generateB;
     @FXML
     private TextArea codeTextArea;
-    Code code1 = new Code(); 
+    private Code code; 
     
 	public void generate() {
-		
+		code  = new Code();
 		String codeString = codeTextArea.getText();
-		ArrayList<String>  tokens= code1.readCode(codeString);
-		//code1.findType(tokens);
+		ArrayList<String> wholeCode= code.readCode(codeString);
+		code.findType(wholeCode);
 		
     	table.setItems(getTable());
     }
