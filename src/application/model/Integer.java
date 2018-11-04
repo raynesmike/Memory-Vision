@@ -22,6 +22,7 @@ public class Integer {
 				pointer++;
 			}
 		}		
+		
 		System.out.printf("\t %d\n", pointer);
 		//TODO
 		switch(pointer) {
