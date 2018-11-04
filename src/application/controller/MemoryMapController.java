@@ -1,7 +1,9 @@
 package application.controller;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import application.model.Code;
 import application.model.Table;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,8 +29,14 @@ public class MemoryMapController implements Initializable{
     private Button generateB;
     @FXML
     private TextArea codeTextArea;
+    Code code1 = new Code(); 
     
 	public void generate() {
+		
+		String codeString = codeTextArea.getText();
+		ArrayList<String>  tokens= code1.readCode(codeString);
+		//code1.findType(tokens);
+		
     	table.setItems(getTable());
     }
     
@@ -37,10 +45,10 @@ public class MemoryMapController implements Initializable{
     	table1.add( new Table( "v1[0]","1004","value") );
     	table1.add( new Table( "v1[1]","1008","value") );
     	table1.add( new Table( "v1[2]","1012","value") );
-    	table1.add( new Table( "ptr","1016","value") );
-    	table1.add( new Table( "  ","1020","value") );
-    	table1.add( new Table( "p1","1024","value") );
-    	table1.add( new Table( "p2","1028","value") );
+    	table1.add( new Table( "ptr"  ,"1016","value") );
+    	table1.add( new Table( "  "   ,"1020","value") );
+    	table1.add( new Table( "p1"   ,"1024","value") );
+    	table1.add( new Table( "p2"   ,"1028","value") );
     	
     	
     	return table1;

@@ -17,9 +17,11 @@
                   <TableColumn fx:id="valueCol" prefWidth="141.0" text="Value" />
               </columns>
             </TableView>
-            <TextArea fx:id="codeTextArea" layoutX="45.0" layoutY="173.0" prefHeight="319.0" prefWidth="305.0" text="main(){&#10;   int v1[] = {20, 30, 40}, *ptr;&#10;   myfunc(&amp;v1[1], &amp;ptr);&#10;}&#10;&#10;&#10;myfunc(int *p1, int **p2){&#10;   *p2 = p1++;&#10;   *p1-- = 80;&#10;   **p2 = 60;&#10;}" />
+            <TextArea fx:id="codeTextArea" layoutX="61.0" layoutY="173.0" prefHeight="319.0" prefWidth="305.0" text="int v[] = {20, 30, 40};&#10;int *p;&#10;int **dp;&#10;p = &amp;v[1];&#10;dp = &amp;p;&#10;v[0]++;&#10;p++;&#10;dp++;&#10;&#10;" />
             <Button fx:id="generateB" layoutX="115.0" layoutY="542.0" mnemonicParsing="false" onAction="#generate" text="Generate" />
             <TextArea layoutX="45.0" layoutY="87.0" prefHeight="56.0" prefWidth="298.0" text="Trace the following code and show the changes in memory" wrapText="true" />
+            <Label layoutX="45.0" layoutY="158.0" text="main(){" />
+            <Label layoutX="53.0" layoutY="499.0" text="}" />
          </children>
       </Pane>
    </children>

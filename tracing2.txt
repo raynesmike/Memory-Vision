@@ -1,0 +1,48 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby, 
+C#, VB, Perl, Swift, Prolog, Javascript, Pascal, HTML, CSS, JS
+Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
+#include <stdio.h>
+
+int main()
+{
+    int v[] = {20, 30, 40};
+    int *p=NULL;
+    int **dp=NULL;
+    printf("v[] = {%i, %i, %i}\n", v[0], v[1], v[2] );
+    printf("&p = %i \tp = %i \t*p = NULL\n", &p, p);
+    printf("&dp = %i \tdp = %i \t*dp = NULL \t**dp = NULL\n", &dp, dp );
+    printf("---------------------------------------------------\n\n");
+    p = &v[1];
+    printf("v[] = {%i, %i, %i}\n", v[0], v[1], v[2] );
+    printf("&p = %i \tp = %i \t*p = %i\n", &p, p, *p );
+    printf("&dp = %i \tdp = %i \t*dp = NULL \t**dp = NULL\n", &dp, dp );
+    printf("---------------------------------------------------\n\n");
+    dp = &p;    
+    printf("v[] = {%i, %i, %i}\n", v[0], v[1], v[2] );
+    printf("&p = %i \tp = %i \t*p = %i\n", &p, p, *p );
+    printf("&dp = %i \tdp = %i \t*dp = %i \t**dp = %i\n", &dp, dp, *dp, **dp );
+    printf("---------------------------------------------------\n\n");
+    v[0]++;
+    printf("v[] = {%i, %i, %i}\n", v[0], v[1], v[2] );
+    printf("&p = %i \tp = %i \t*p = %i\n", &p, p, *p );
+    printf("&dp = %i \tdp = %i \t*dp = %i \t**dp = %i\n", &dp, dp, *dp, **dp );
+    printf("---------------------------------------------------\n\n");
+    p++;
+    printf("v[] = {%i, %i, %i}\n", v[0], v[1], v[2] );
+    printf("&p = %i \tp = %i \t*p = %i\n", &p, p, *p );
+    printf("&dp = %i \tdp = %i \t*dp = %i \t**dp = %i\n", &dp, dp, *dp, **dp );
+    printf("---------------------------------------------------\n\n");
+    dp++;
+    printf("v[] = {%i, %i, %i}\n", v[0], v[1], v[2] );
+    printf("&p = %i \tp = %i \t*p = %i\n", &p, p, *p );
+    printf("&dp = %i \tdp = %i \t*dp = %i \t**dp = %i\n", &dp, dp, *dp, **dp );
+    printf("---------------------------------------------------\n\n");
+    
+
+    return 0;
+}
