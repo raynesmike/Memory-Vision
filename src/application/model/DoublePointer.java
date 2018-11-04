@@ -1,5 +1,5 @@
 package application.model;
 
-public class Pointers {
+public class DoublePointer {
 
 }

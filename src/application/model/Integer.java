@@ -24,7 +24,7 @@ public class Integer {
 		}		
 		
 		System.out.printf("\t %d\n", pointer);
-		//TODO
+		//TODO 
 		switch(pointer) {
 			case 0:
 				System.out.println("Integer");
