@@ -8,6 +8,8 @@ public class Table {
 	private String variable;
 	private String value;
 	private int address;
+	private int currAddress;
+	private int startAddress;
 	// TODO look for the variable name
 	
 	// TODO assign address
@@ -104,6 +106,24 @@ public class Table {
 	}
 	public void setAddress(int address) {
 		this.address = address;
+	}
+	public ArrayList<Variable> getTable() {
+		return table;
+	}
+	public void setTable(ArrayList<Variable> table) {
+		this.table = table;
+	}
+	public int getCurrAddress() {
+		return currAddress;
+	}
+	public void setCurrAddress(int currAddress) {
+		this.currAddress = currAddress;
+	}
+	public int getStartAddress() {
+		return startAddress;
+	}
+	public void setStartAddress(int startAddress) {
+		this.startAddress = startAddress;
 	}
 
 }

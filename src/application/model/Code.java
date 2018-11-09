@@ -10,6 +10,9 @@ public class Code {
 	private Table table;
 	//public static ArrayList<codes>functions;
 	
+	/**
+	 * Constructor
+	 */
 	public Code() {
 		this.startAddress=1000;
 		this.curAddress=1000;
@@ -61,14 +64,39 @@ public class Code {
 		}
 	}
 
-
 	public String getCodes() {
 		return codes;
 	}
-	
-	public void setCodes(String codes){
+
+	public void setCodes(String codes) {
 		this.codes = codes;
-	}	
-	
+	}
+
+	public int getStartAddress() {
+		return startAddress;
+	}
+
+	public void setStartAddress(int startAddress) {
+		this.startAddress = startAddress;
+	}
+
+	public int getCurAddress() {
+		return curAddress;
+	}
+
+	public void setCurAddress(int curAddress) {
+		this.curAddress = curAddress;
+	}
+
+	public Table getTable() {
+		return table;
+	}
+
+	public void setTable(Table table) {
+		this.table = table;
+	}
+
+
+
 
 }
