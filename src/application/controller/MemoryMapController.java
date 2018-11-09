@@ -1,10 +1,9 @@
 package application.controller;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import application.model.Code;
-import application.model.Table;
+import application.model.Variable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,13 +17,13 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class MemoryMapController implements Initializable{
     @FXML
-    private TableView<Table> table;
+    private TableView<Variable> table;
     @FXML
-    private TableColumn<Table, String> variableCol;
+    private TableColumn<Variable, String> variableCol;
     @FXML
-    private TableColumn<Table, String> addressCol;
+    private TableColumn<Variable, Integer>addressCol;
     @FXML
-    private TableColumn<Table, String> valueCol;
+    private TableColumn<Variable, String> valueCol;
     @FXML
     private Button generateB;
     @FXML
@@ -33,20 +32,21 @@ public class MemoryMapController implements Initializable{
     
 	public void generate() {
 		code  = new Code();
-		String codeString = codeTextArea.getText();
-		code.readCode(codeString);		
-    	table.setItems(getTable());
+		//String codeString = codeTextArea.getText();
+		
+    	table.setItems(getVariable());
+		//code.readCode(codeString);		
     }
     
-    public ObservableList<Table> getTable(){
-    	ObservableList<Table> table1 = FXCollections.observableArrayList();
-    	table1.add( new Table( "v1[0]","1004","value") );
-    	table1.add( new Table( "v1[1]","1008","value") );
-    	table1.add( new Table( "v1[2]","1012","value") );
-    	table1.add( new Table( "ptr"  ,"1016","value") );
-    	table1.add( new Table( "  "   ,"1020","value") );
-    	table1.add( new Table( "p1"   ,"1024","value") );
-    	table1.add( new Table( "p2"   ,"1028","value") );
+    public ObservableList<Variable> getVariable(){
+    	ObservableList<Variable> table1 = FXCollections.observableArrayList();
+    	table1.add( new Variable( "v1[0]",1004,"value") );
+    	table1.add( new Variable( "v1[1]",1008,"value") );
+    	table1.add( new Variable( "v1[2]",1012,"value") );
+    	table1.add( new Variable( "ptr"  ,1016,"value") );
+    	table1.add( new Variable( "  "   ,1020,"value") );
+    	table1.add( new Variable( "p1"   ,1024,"value") );
+    	table1.add( new Variable( "p2"   ,1028,"value") );
     	
     	
     	return table1;

@@ -24,10 +24,10 @@ public class Table {
 		this.table = new ArrayList<Variable>();
 	
 	}
-	public Table(String variable, String address, String value) {
+	public Table(String variable, String value, int address) {
 		this.variable = variable;
 		this.value = value;
-		this.address = 1000;
+		this.address = address;
 	}
 	public void modify(String s) {
 		System.out.println(s);

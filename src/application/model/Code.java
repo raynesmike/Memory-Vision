@@ -14,6 +14,7 @@ public class Code {
 		this.startAddress=1000;
 		this.curAddress=1000;
 		this.codes = null;
+		this.table = new Table();
 	}
 	
 	public ArrayList<String> readCode( String codeString ) {
