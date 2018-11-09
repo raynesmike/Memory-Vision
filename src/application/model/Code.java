@@ -5,12 +5,15 @@ import java.util.Scanner;
 
 public class Code {
 	private String codes;
-	private ArrayList<Table> table;
+	private int startAddress;
+	private int curAddress;
+	private Table table;
 	//public static ArrayList<codes>functions;
 	
 	public Code() {
+		this.startAddress=1000;
+		this.curAddress=1000;
 		this.codes = null;
-		this.table = new ArrayList<Table>();
 	}
 	
 	public ArrayList<String> readCode( String codeString ) {
@@ -36,7 +39,7 @@ public class Code {
 		switch(word[0]){
 			case "int":
 				System.out.print(word[0]);
-				//table.classifyLine(line);
+				table.classifyLine(line);
 				break;
 			case "char":
 				System.out.println(word[0]);
@@ -54,8 +57,6 @@ public class Code {
 			    //this.table.modify(line);
 				
 			    break;
-			
-		
 		}
 	}
 

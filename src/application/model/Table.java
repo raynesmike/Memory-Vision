@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Table {
 
+	private ArrayList<Variable> table;
 	private String variable;
 	private String value;
 	private int address;
@@ -19,8 +20,8 @@ public class Table {
 	 * Constructor
 	 */
 	public Table() {
-		this.variable = "";
-		this.address = 1000;
+
+		this.table = new ArrayList<Variable>();
 	
 	}
 	public Table(String variable, String address, String value) {
@@ -104,10 +105,5 @@ public class Table {
 	public void setAddress(int address) {
 		this.address = address;
 	}
-
-	
-
-
-
 
 }

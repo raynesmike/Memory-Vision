@@ -11,7 +11,6 @@ public class Integer {
 		this.name = name;
 		this.value = value;
 	}
-	
 
 	/**
 	 * Getters and Setters
