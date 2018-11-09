@@ -4,11 +4,9 @@ import java.util.ArrayList;
 
 public class Table {
 
-	private ArrayList<Variable> newTable;
 	private String variable;
 	private String value;
-	private int startAddress;
-	private int freeAddress;
+	private int address;
 	// TODO look for the variable name
 	
 	// TODO assign address
@@ -22,16 +20,13 @@ public class Table {
 	 */
 	public Table() {
 		this.variable = "";
-		this.newTable = new ArrayList<Variable>();
-		this.startAddress = 1000;
-		this.freeAddress = 1000;
+		this.address = 1000;
 	
 	}
 	public Table(String variable, String address, String value) {
 		this.variable = variable;
 		this.value = value;
-		this.startAddress = 1000;
-		this.freeAddress = 1000;
+		this.address = 1000;
 	}
 	public void modify(String s) {
 		System.out.println(s);
@@ -49,7 +44,6 @@ public class Table {
 		 *		--**dptr= VALUE of the VARIABLE
 		 */
 		
-		Variable newVar;
 		String[] words =s.split(" ");
 		int pointer = 0;
 		for(int i= words[0].length()+1; i < s.length(); i++) {
@@ -92,12 +86,6 @@ public class Table {
 	 * @return
 	 */
 
-	public ArrayList<Variable> getNewTable() {
-		return newTable;
-	}
-	public void setNewTable(ArrayList<Variable> newTable) {
-		this.newTable = newTable;
-	}
 	public String getVariable() {
 		return variable;
 	}
@@ -110,18 +98,13 @@ public class Table {
 	public void setValue(String value) {
 		this.value = value;
 	}
-	public int getStartAddress() {
-		return startAddress;
+	public int getAddress() {
+		return address;
 	}
-	public void setStartAddress(int startAddress) {
-		this.startAddress = startAddress;
+	public void setAddress(int address) {
+		this.address = address;
 	}
-	public int getFreeAddress() {
-		return freeAddress;
-	}
-	public void setFreeAddress(int freeAddress) {
-		this.freeAddress = freeAddress;
-	}
+
 	
 
 

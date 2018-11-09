@@ -5,7 +5,6 @@ public class Integer {
 	private int size;
 	private String name;
 	private String value;
-	private Variable var;
 	
 	public Integer(int size, String name, String value) {
 		this.size = 4;

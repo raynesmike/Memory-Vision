@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -32,6 +33,11 @@
                         <Font size="72.0" />
                      </font>
                   </Label>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="39.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../../../../../Desktop/giphy.gif" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
          </center></BorderPane>

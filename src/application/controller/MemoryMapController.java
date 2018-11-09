@@ -34,9 +34,7 @@ public class MemoryMapController implements Initializable{
 	public void generate() {
 		code  = new Code();
 		String codeString = codeTextArea.getText();
-		ArrayList<String> wholeCode= code.readCode(codeString);
-		code.findType(wholeCode);
-		
+		code.readCode(codeString);		
     	table.setItems(getTable());
     }
     
@@ -59,7 +57,5 @@ public class MemoryMapController implements Initializable{
     	variableCol.setCellValueFactory(new PropertyValueFactory<>("variable"));
     	addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
     	valueCol.setCellValueFactory(new PropertyValueFactory<>("value"));
-
 	}
-
 }
