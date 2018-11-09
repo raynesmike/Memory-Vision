@@ -42,19 +42,19 @@ public class Code {
 		// add the variables being classified.
 		switch(word[0]){
 			case "int":
-				System.out.print(word[0]);
+				//System.out.print(word[0]);
 				table.classifyLine(line);
 				break;
 			case "char":
-				System.out.println(word[0]);
+				//System.out.println(word[0]);
 				//table.classifyLine(line);
 				break;
 			case "float":
-				System.out.println(word[0]);
+				//System.out.println(word[0]);
 				//table.classifyLine(line);
 				break;
 			case "double":
-				System.out.println(word[0]);
+				//System.out.println(word[0]);
 				//table.classifyLine(line);
 				break;
 			default: // actions

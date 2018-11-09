@@ -32,11 +32,11 @@ public class MemoryMapController implements Initializable{
     
 	public void generate() {
 		code  = new Code();
-		//String codeString = codeTextArea.getText();
-		
+		String codeString = codeTextArea.getText();
+		code.readCode(codeString);		
+	    
     	table.setItems(getVariable());
-		//code.readCode(codeString);		
-    }
+	}
     
     public ObservableList<Variable> getVariable(){
     	ObservableList<Variable> table1 = FXCollections.observableArrayList();

@@ -10,6 +10,7 @@ public class Table {
 	private int address;
 	private int currAddress;
 	private int startAddress;
+	private Variable newVar;
 	// TODO look for the variable name
 	
 	// TODO assign address
@@ -36,6 +37,50 @@ public class Table {
 	}
 	
 	public void classifyLine(String s) {
+		newVar = new Variable();
+		String[] words =s.split(" ");
+		int pointer = 0;
+		int lenOfPType = words[0].length();
+		for(int i= lenOfPType+1; i < s.length(); i++) {
+			//System.out.print(s.charAt(i));
+			/**
+			 * stop when end or after the variable name;
+			 */
+			if(s.charAt(i)=='=' || s.charAt(i) == ';') {
+				break;
+			}
+			if(s.charAt(i)==('*')) {
+				pointer++;
+			}
+		}
+		lenOfPType +=pointer;
+		//System.out.printf("\t %d\n", pointer);
+		Variable resultVar;
+		switch(pointer) {
+			case 0:
+				//System.out.println("Integer");
+				resultVar = newVar.assign(s, lenOfPType, pointer);
+				table.add(resultVar);
+				break;
+			case 1:
+				//System.out.println("Pointer");
+				resultVar = newVar.assign(s, lenOfPType, pointer);
+				table.add(resultVar);
+				break;
+			case 2:
+				//System.out.println("Double Pointer");
+				resultVar = newVar.assign(s, lenOfPType, pointer);
+				table.add(resultVar);
+				break;
+			default:
+				System.out.printf("ERROR");
+				break;
+		}	
+		
+		/**
+		 * TODO 
+		 * Create a Table that will contain variable name, address and its value
+		 */
 		/**
 		 *  TODO check if its a pointer or not
 		 *	POINTER int *ptr;
@@ -46,39 +91,6 @@ public class Table {
 		 *		--*dptr = address of the VARIABLE
 		 *		--**dptr= VALUE of the VARIABLE
 		 */
-		
-		String[] words =s.split(" ");
-		int pointer = 0;
-		for(int i= words[0].length()+1; i < s.length(); i++) {
-			System.out.print(s.charAt(i));
-			if(s.charAt(i)==('*')) {
-				pointer++;
-			}
-		}
-		
-		/**
-		 * TODO 
-		 * Create a Table that will contain variable name, address and its value
-		 */
-		
-		System.out.printf("\t %d\n", pointer);
-		
-		switch(pointer) {
-			case 0:
-				System.out.println("Integer");
-				//Variable(words, pointer);
-				
-				break;
-			case 1:
-				System.out.println("Pointer");
-				break;
-			case 2:
-				System.out.println("Double Pointer");
-				break;
-			default:
-				System.out.printf("ERROR");
-				break;
-		}
 		//return var;
 		// TODO assign into an address /if *ptr  
 		
