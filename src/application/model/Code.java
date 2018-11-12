@@ -45,19 +45,24 @@ public class Code {
 		switch(word[0]){
 			case "int":
 				//System.out.print(word[0]);
-				table.classifyLine(line);
+				//curAddress+=4;
+				curAddress = table.classifyLine(line, curAddress);
+				
 				break;
 			case "char":
 				//System.out.println(word[0]);
-				//table.classifyLine(line);
+				//curAddress+=1;
+				curAddress = table.classifyLine(line, curAddress);
 				break;
 			case "float":
 				//System.out.println(word[0]);
-				//table.classifyLine(line);
+				//curAddress+=8;
+				curAddress = table.classifyLine(line, curAddress);
 				break;
 			case "double":
 				//System.out.println(word[0]);
-				table.classifyLine(line);
+				//curAddress+=8;
+				curAddress = table.classifyLine(line, curAddress);
 				break;
 			default: // actions
 			    //this.table.modify(line);

@@ -36,7 +36,7 @@ public class Table {
 		System.out.println(s);
 	}
 	
-	public void classifyLine(String s) {
+	public int classifyLine(String s, int curAdd) {
 		newVar = new Variable();
 		String[] words =s.split(" ");
 		int pointer = 0;
@@ -51,7 +51,8 @@ public class Table {
 			/**
 			 * stop when end or after the variable name;
 			 */
-			if(flagPassEq==1 && s.charAt(i)!=';' && s.charAt(i) != '{' && s.charAt(i) != '}') {
+			if(flagPassEq==1 && s.charAt(i)!=';' && s.charAt(i) != '{' && s.charAt(i) != '}' 
+				&& s.charAt(i) != '\''&&s.charAt(i) != '\"') {
 					value+=s.charAt(i);
 			}
 			if(s.charAt(i)=='=') { flagPassEq = 1;} //this will prevent counting * after '='
@@ -70,26 +71,32 @@ public class Table {
 		//if Array then send to Array Class v[0],v[1],v[2] to add this table
 		
 		if(flagArray==1) {
-			this.assignArray(varName, value);
-		}else {
-			Variable new1 = new Variable(varName, 0, value);
+			curAdd=this.assignArray(varName, curAdd, value);
+		
+		}else {	
+			Variable new1 = new Variable(varName, curAdd, value);
+			curAdd+=4;
 			table.add(new1);
 			//System.out.println(jammy.toString());
 		}
+		return curAdd;
+		
 	}
-	public void assignArray(String name, String val) {
+	public int assignArray(String name,int curAdd, String val) {
 		
 		String varName ="";
 		String tokens[] = val.split(",");
-
+		
 		for(int i = 0; i <tokens.length; i++) {
 			
 			varName = name + "[" +String.valueOf(i) + "]";
-			Variable new1 = new Variable(varName, 0, tokens[i]);
+			Variable new1 = new Variable(varName, curAdd, tokens[i]);
+			curAdd +=4;
 			table.add(new1);
 			
 			//System.out.println(jammy.toString());
 		}
+		return curAdd;
 	}
 		//System.out.printf("\t %d\n", pointer);
 //		Variable resultVar;
