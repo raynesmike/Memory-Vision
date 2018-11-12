@@ -66,7 +66,7 @@ public class Variable {
 							flagNext = 1;
 							valArray.add(value);
 							varArray.add(variable+String.valueOf(arrayIndex)+']');
-							System.out.println(variable+String.valueOf(arrayIndex)+']' + value);
+							//System.out.println(variable+String.valueOf(arrayIndex)+']' + value);
 							value="";
 							arrayIndex++;
 						} //activate NEXT
@@ -109,5 +109,9 @@ public class Variable {
 	}
 	public void setValue(String value) {
 		this.value = value;
+	}
+	
+	public String toString() {
+		return variable +"="+ value + "->"+String.valueOf(address);
 	}
 }

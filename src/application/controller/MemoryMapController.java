@@ -31,23 +31,31 @@ public class MemoryMapController implements Initializable{
     private Code code; 
     
 	public void generate() {
+		ObservableList<Variable> table1 = FXCollections.observableArrayList();
 		code  = new Code();
 		String codeString = codeTextArea.getText();
 		code.readCode(codeString);		
 	    
-    	table.setItems(getVariable());
+    	//table.setItems(getVariable());
+    	for(Variable y: code.getTable().getTable()) {
+    		System.out.println(y.toString());
+
+        	table1.add(y);
+        }
+    	
+    	table.setItems(table1);
 	}
     
     public ObservableList<Variable> getVariable(){
     	ObservableList<Variable> table1 = FXCollections.observableArrayList();
-    	table1.add( new Variable( "v1[0]",1004,"value") );
-    	table1.add( new Variable( "v1[1]",1008,"value") );
-    	table1.add( new Variable( "v1[2]",1012,"value") );
-    	table1.add( new Variable( "ptr"  ,1016,"value") );
-    	table1.add( new Variable( "  "   ,1020,"value") );
-    	table1.add( new Variable( "p1"   ,1024,"value") );
-    	table1.add( new Variable( "p2"   ,1028,"value") );
-    	
+//    	table1.add( new Variable( "v1[0]",1004,"value") );
+//    	table1.add( new Variable( "v1[1]",1008,"value") );
+//    	table1.add( new Variable( "v1[2]",1012,"value") );
+//    	table1.add( new Variable( "ptr"  ,1016,"value") );
+//    	table1.add( new Variable( "  "   ,1020,"value") );
+//    	table1.add( new Variable( "p1"   ,1024,"value") );
+//    	table1.add( new Variable( "p2"   ,1028,"value") );
+//    	
     	
     	return table1;
     }

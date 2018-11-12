@@ -41,42 +41,79 @@ public class Table {
 		String[] words =s.split(" ");
 		int pointer = 0;
 		int lenOfPType = words[0].length();
+		int flagArray = 0;
+		int flagPassEq = 0;
+		int cntElement = 0;
+		String varName="";
+		String value="";
 		for(int i= lenOfPType+1; i < s.length(); i++) {
 			//System.out.print(s.charAt(i));
 			/**
 			 * stop when end or after the variable name;
 			 */
-			if(s.charAt(i)=='=' || s.charAt(i) == ';') {
-				break;
+			if(flagPassEq==1 && s.charAt(i)!=';' && s.charAt(i) != '{' && s.charAt(i) != '}') {
+					value+=s.charAt(i);
 			}
-			if(s.charAt(i)==('*')) {
-				pointer++;
-			}
+			if(s.charAt(i)=='=') { flagPassEq = 1;} //this will prevent counting * after '='
+			if(s.charAt(i)==',') { cntElement++; } // count the element
+			if(s.charAt(i)=='[' && flagPassEq==0) { flagArray=1; i+=2;} //classify as Array so that we can assign ea element.
+			if(s.charAt(i)=='*' && flagPassEq==0) { pointer++;	} //increase if *ptr or **ptr
+			if(s.charAt(i)!='*' && flagPassEq==0) { varName+=s.charAt(i);} // read the varName
+			//TODO get the name and TODO get the elements as a string after { up to }
+			
+			//TODO can create another class to assign if Array and if not then just call it.
+			
+			//if(s.charAt(i)=='=' || s.charAt(i) == ';') { break; } //stops before it assign or at end
 		}
+		//System.out.println(varName+"===" + value);
 		lenOfPType +=pointer;
-		//System.out.printf("\t %d\n", pointer);
-		Variable resultVar;
-		switch(pointer) {
-			case 0:
-				//System.out.println("Integer");
-				resultVar = newVar.assign(s, lenOfPType, pointer);
-				table.add(resultVar);
-				break;
-			case 1:
-				//System.out.println("Pointer");
-				resultVar = newVar.assign(s, lenOfPType, pointer);
-				table.add(resultVar);
-				break;
-			case 2:
-				//System.out.println("Double Pointer");
-				resultVar = newVar.assign(s, lenOfPType, pointer);
-				table.add(resultVar);
-				break;
-			default:
-				System.out.printf("ERROR");
-				break;
-		}	
+		//if Array then send to Array Class v[0],v[1],v[2] to add this table
 		
+		if(flagArray==1) {
+			this.assignArray(varName, value);
+		}else {
+			Variable new1 = new Variable(varName, 0, value);
+			table.add(new1);
+			//System.out.println(jammy.toString());
+		}
+	}
+	public void assignArray(String name, String val) {
+		
+		String varName ="";
+		String tokens[] = val.split(",");
+
+		for(int i = 0; i <tokens.length; i++) {
+			
+			varName = name + "[" +String.valueOf(i) + "]";
+			Variable new1 = new Variable(varName, 0, tokens[i]);
+			table.add(new1);
+			
+			//System.out.println(jammy.toString());
+		}
+	}
+		//System.out.printf("\t %d\n", pointer);
+//		Variable resultVar;
+//		switch(pointer) {
+//			case 0:
+//				//System.out.println("Integer");
+//				resultVar = newVar.assign(s, lenOfPType, pointer);
+//				table.add(resultVar);
+//				break;
+//			case 1:
+//				//System.out.println("Pointer");
+//				resultVar = newVar.assign(s, lenOfPType, pointer);
+//				table.add(resultVar);
+//				break;
+//			case 2:
+//				//System.out.println("Double Pointer");
+//				resultVar = newVar.assign(s, lenOfPType, pointer);
+//				table.add(resultVar);
+//				break;
+//			default:
+//				System.out.printf("ERROR");
+//				break;
+//		}	
+//		
 		/**
 		 * TODO 
 		 * Create a Table that will contain variable name, address and its value
@@ -94,7 +131,7 @@ public class Table {
 		//return var;
 		// TODO assign into an address /if *ptr  
 		
-	}
+
 	
 	/**
 	 * Setters and Getters

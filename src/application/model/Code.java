@@ -28,9 +28,11 @@ public class Code {
 		
 		while( scan.hasNextLine() ) {
 			String line = scan.nextLine();
+			
 			wholeCode.add( line );
+			
 			this.readPerLine( line );
-			System.out.println( line );
+			//System.out.println( line );
 		}
 		
 		return wholeCode;
@@ -55,7 +57,7 @@ public class Code {
 				break;
 			case "double":
 				//System.out.println(word[0]);
-				//table.classifyLine(line);
+				table.classifyLine(line);
 				break;
 			default: // actions
 			    //this.table.modify(line);
