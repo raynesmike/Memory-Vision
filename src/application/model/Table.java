@@ -36,7 +36,7 @@ public class Table {
 		System.out.println(s);
 	}
 	
-	public int classifyLine(String s, int curAdd) {
+	public int classifyLine(String s, int curAdd , int addSize, int type) {
 		newVar = new Variable();
 		String[] words =s.split(" ");
 		int pointer = 0;
@@ -59,30 +59,26 @@ public class Table {
 			if(s.charAt(i)==',') { cntElement++; } // count the element
 			if(s.charAt(i)=='[' && flagPassEq==0) { flagArray=1; i+=2;} //classify as Array so that we can assign ea element.
 			if(s.charAt(i)=='*' && flagPassEq==0) { pointer++;	} //increase if *ptr or **ptr
-			if(s.charAt(i)!='*' && flagPassEq==0) { varName+=s.charAt(i);} // read the varName
-			//TODO get the name and TODO get the elements as a string after { up to }
+			if(s.charAt(i)!='*' && flagPassEq==0 && s.charAt(i)!=';') { varName+=s.charAt(i);} // read the varName
 			
-			//TODO can create another class to assign if Array and if not then just call it.
-			
-			//if(s.charAt(i)=='=' || s.charAt(i) == ';') { break; } //stops before it assign or at end
 		}
 		//System.out.println(varName+"===" + value);
 		lenOfPType +=pointer;
 		//if Array then send to Array Class v[0],v[1],v[2] to add this table
 		
 		if(flagArray==1) {
-			curAdd=this.assignArray(varName, curAdd, value);
+			curAdd=this.assignArray(varName, value, curAdd, addSize, pointer, type);
 		
 		}else {	
-			Variable new1 = new Variable(varName, curAdd, value);
-			curAdd+=4;
+			Variable new1 = new Variable(varName, curAdd, value, pointer, type);
+			//new1.valueType(pointer);
+			curAdd+=addSize;
 			table.add(new1);
-			//System.out.println(jammy.toString());
 		}
 		return curAdd;
 		
 	}
-	public int assignArray(String name,int curAdd, String val) {
+	public int assignArray(String name, String val,int curAdd,int addSize, int pointer, int type) {
 		
 		String varName ="";
 		String tokens[] = val.split(",");
@@ -90,8 +86,8 @@ public class Table {
 		for(int i = 0; i <tokens.length; i++) {
 			
 			varName = name + "[" +String.valueOf(i) + "]";
-			Variable new1 = new Variable(varName, curAdd, tokens[i]);
-			curAdd +=4;
+			Variable new1 = new Variable(varName, curAdd, tokens[i], pointer, type);
+			curAdd +=addSize;
 			table.add(new1);
 			
 			//System.out.println(jammy.toString());

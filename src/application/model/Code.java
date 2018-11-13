@@ -40,29 +40,29 @@ public class Code {
 	
 	public void readPerLine( String line ) {
 		String[] word =line.split(" ");
-		
+		int addSize = 0;
 		// add the variables being classified.
 		switch(word[0]){
 			case "int":
 				//System.out.print(word[0]);
-				//curAddress+=4;
-				curAddress = table.classifyLine(line, curAddress);
+				addSize=4;
+				curAddress = table.classifyLine(line, curAddress, addSize, 1);
 				
 				break;
 			case "char":
 				//System.out.println(word[0]);
-				//curAddress+=1;
-				curAddress = table.classifyLine(line, curAddress);
+				addSize=1;
+				curAddress = table.classifyLine(line, curAddress, addSize, 2);
 				break;
 			case "float":
 				//System.out.println(word[0]);
-				//curAddress+=8;
-				curAddress = table.classifyLine(line, curAddress);
+				addSize=8;
+				curAddress = table.classifyLine(line, curAddress, addSize, 3);
 				break;
 			case "double":
 				//System.out.println(word[0]);
-				//curAddress+=8;
-				curAddress = table.classifyLine(line, curAddress);
+				addSize=8;
+				curAddress = table.classifyLine(line, curAddress, addSize, 4);
 				break;
 			default: // actions
 			    //this.table.modify(line);
