@@ -94,29 +94,7 @@ public class Table {
 		}
 		return curAdd;
 	}
-		//System.out.printf("\t %d\n", pointer);
-//		Variable resultVar;
-//		switch(pointer) {
-//			case 0:
-//				//System.out.println("Integer");
-//				resultVar = newVar.assign(s, lenOfPType, pointer);
-//				table.add(resultVar);
-//				break;
-//			case 1:
-//				//System.out.println("Pointer");
-//				resultVar = newVar.assign(s, lenOfPType, pointer);
-//				table.add(resultVar);
-//				break;
-//			case 2:
-//				//System.out.println("Double Pointer");
-//				resultVar = newVar.assign(s, lenOfPType, pointer);
-//				table.add(resultVar);
-//				break;
-//			default:
-//				System.out.printf("ERROR");
-//				break;
-//		}	
-//		
+
 		/**
 		 * TODO 
 		 * Create a Table that will contain variable name, address and its value

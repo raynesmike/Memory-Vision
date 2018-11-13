@@ -20,7 +20,7 @@ public class Variable {
 		this.pointerType = pointer;
 		this.address = address;
 		this.valueType = type;
-		this.checkType(val);
+		this.checkType(val.trim());
 		
 	}
 	public Variable() {
@@ -32,7 +32,74 @@ public class Variable {
 	
 	public void checkType(String val) {
 		
-		this.value = val;
+		if (valueType == 1 && pointerType == 0) {
+			this.intType(val);
+		}
+		if (valueType == 2 && pointerType == 0) {
+			this.charType(val);
+		}
+		if (valueType == 3 && pointerType == 0) {
+			this.floatType(val);
+		}
+		if (valueType == 4 && pointerType == 0) {
+			this.doubleType(val);
+		}
+		
+		//this.value = val;
+	}
+	
+	public void intType(String val) {
+		//-2,147,483,648 to 2,147,483,647 
+		
+		for (int i=0; i< val.length() ; i++) {
+			if(!Character.isDigit(val.charAt(i))) {
+				this.value = "Invalid Type";
+			}
+		}
+		try{
+			Integer.parseInt(val);
+			this.value = val;
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+			this.value = "Invalid Type";
+		}
+		
+	}
+	public void charType(String val) {
+		if(val.length() > 1) {
+			this.value = "Invalid Type";
+		}else {
+			value = val;
+		}
+		
+	}
+	public void floatType(String val) {
+		for (int i=0; i< val.length() ; i++) {
+			if(!Character.isDigit(val.charAt(i))) {
+				this.value = "Invalid Type";
+			}
+		}
+		try{
+			Float.parseFloat(val);
+			this.value = val;
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+			this.value = "Invalid Type";
+		}
+	}
+	public void doubleType(String val) {
+		for (int i=0; i< val.length() ; i++) {
+			if(!Character.isDigit(val.charAt(i))) {
+				this.value = "Invalid Type";
+			}
+		}
+		try{
+			Double.parseDouble(val);
+			this.value = val;
+		}catch(NumberFormatException e){
+			e.printStackTrace();
+			this.value = "Invalid Type";
+		}
 	}
 	/**
 	 * Setters and Getters
