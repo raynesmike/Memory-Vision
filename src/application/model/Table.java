@@ -36,22 +36,72 @@ public class Table {
 		String [] tokens = s.split(" ");
 		String value = "";
 		String use = "";
+		int currentValue;
+		int flagCome = 0;
+		
+		//int =1;
+		//char=2;
+		//float=3;
+		//double=4;
+		
+		
+		
 		if(tokens.length > 1) {
 			if ("=".equals(tokens[1])) {
-			
 				for (Variable x: table) {
 					if (tokens[0].equals(x.getVariable())) {
-						for(int i = 2; i < tokens.length; i++) {
-							
-							use += tokens[i] + " ";
-						}
-						use = use.replace(";", "");
-						this.operation(use);
 						
-						x.setValue(tokens[tokens.length-1].replace(";", ""));
-						System.out.println(x.getValue());
-					}
-					
+						if(x.getValueType() == 1 || x.getValueType() == 3 || x.getValueType() == 4) {
+							for(int i = 2; i < tokens.length; i++) {
+								//System.out.println(tokens[i].replace(";", "") + "-----" +x.getVariable());
+								for(Variable y: table) {
+									if(tokens[i].replace(";", "").equals(y.getVariable())) {
+										tokens[i] = y.getValue();
+									}	
+								}
+								
+								use += tokens[i] + " ";
+							}
+							use = use.replace(";", "");
+							value = this.operation(use);
+							
+							x.setValue(value);
+							//System.out.println(x.getValue());
+						}
+						if (x.getValueType() == 2) {
+							for(Variable y: table) {
+								if(tokens[2].replace(";", "").equals(y.getVariable())) {
+									if (y.getValueType() == 2) {
+										tokens[2] = y.getValue();
+										flagCome = 1;
+									}
+								}	
+							
+								//char name = 'r';
+								//char last = 'z';
+								//name = last;
+								
+								if (flagCome == 1) {
+									//flagCome = 1;
+									x.setValue(tokens[2]);
+								} 
+								
+								else if(tokens[2].replace(";", "").matches("'.'")){
+									value = tokens[2].replaceAll("'", "");
+									value = value.replace(";", "");
+									System.out.println("THE IS A QUOTE AROUND IT NOW ASSIGN IT");
+									x.setValue(value);
+								}
+								//else {
+									//x.setValue(y.getValue());
+								//}
+//								value = tokens[2].replace("'", "");
+//								value = value.replaceAll(";", "");
+//								x.setValue(value);
+//								
+							}
+						}
+					}		
 				}
 			}
 		}
@@ -62,11 +112,11 @@ public class Table {
 		String sum = "0";
 		
 		for (int i = 0; i < tokens.length; i+=2) {
-			System.out.println(tokens.length-1 + "----" +i);
-			System.out.println("----");
-			System.out.println(sum+"  +  "+tokens[i]);
+			//System.out.println(tokens.length-1 + "----" +i);
+			//System.out.println("----");
+			//System.out.println(sum+"  +  "+tokens[i]);
 			sum = this.calculate(sum, "+", tokens[i] );
-			System.out.println(sum+"-----@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+			//System.out.println(sum+"-----@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		}
 		
 		
@@ -76,14 +126,14 @@ public class Table {
 	
 	public String calculate(String one, String oper, String two ) {
 		String value = "";
-		System.out.println(one + oper + two);
+		//System.out.println(one + oper + two);
 		switch(oper) {
 		case "+":
 			value = String.valueOf((Integer.parseInt(one) + Integer.parseInt(two)));
-			System.out.println(value +"@@@@@@@@@@@@DDDDDDDDDDDDDDDDDIIIIIIIIIIIIIIINNNNNNNNNNNNNNGGGGGGGGGGGGGGGG");
+			//System.out.println(value +"@@@@@@@@@@@@DDDDDDDDDDDDDDDDDIIIIIIIIIIIIIIINNNNNNNNNNNNNNGGGGGGGGGGGGGGGG");
 			break;
 			default:
-				System.out.println("I FUCKING HATE THIS");
+				//System.out.println("I FUCKING HATE THIS");
 				break;
 		}
 		

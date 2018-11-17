@@ -17,7 +17,7 @@
                   <TableColumn fx:id="valueCol" prefWidth="141.0" text="Value" />
               </columns>
             </TableView>
-            <TextArea fx:id="codeTextArea" layoutX="61.0" layoutY="173.0" prefHeight="319.0" prefWidth="305.0" text="int v[] = {20, 30, 40};&#10;int x = 20;&#10;int y = 30;&#10;char a[] = {'a', 'b', 'c'};&#10;x = 20 + 30;&#10;y = x + 50;&#10;v[1] = 20 + 30;&#10;v[2] = v[1] + 50;&#10;v[0]++;&#10;int *p;&#10;int **dp;&#10;p = &amp;v[1];&#10;dp = &amp;p;&#10;p++;&#10;dp++;&#10;&#10;" />
+            <TextArea fx:id="codeTextArea" layoutX="61.0" layoutY="173.0" prefHeight="319.0" prefWidth="305.0" text="int v[] = {20, 30, 40};&#10;int x = 20;&#10;int y = 30;&#10;char a[] = {'a', 'b', 'c'};&#10;x = 20 + 30;&#10;y = x + 50;&#10;v[1] = 20 + 30;&#10;v[2] = v[1] + 50;&#10;char name = 'r';&#10;char last = 'z';&#10;name = last;&#10;v[0]++;&#10;int *p;&#10;int **dp;&#10;p = &amp;v[1];&#10;dp = &amp;p;&#10;p++;&#10;dp++;&#10;&#10;" />
             <Button fx:id="generateB" layoutX="115.0" layoutY="542.0" mnemonicParsing="false" onAction="#generate" text="Generate" />
             <TextArea layoutX="45.0" layoutY="87.0" prefHeight="56.0" prefWidth="298.0" text="Trace the following code and show the changes in memory" wrapText="true" />
             <Label layoutX="45.0" layoutY="158.0" text="main(){" />

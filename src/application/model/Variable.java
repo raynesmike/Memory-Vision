@@ -125,6 +125,18 @@ public class Variable {
 		this.value = value;
 	}
 	
+	public int getPointerType() {
+		return pointerType;
+	}
+	public void setPointerType(int pointerType) {
+		this.pointerType = pointerType;
+	}
+	public int getValueType() {
+		return valueType;
+	}
+	public void setValueType(int valueType) {
+		this.valueType = valueType;
+	}
 	public String toString() {
 		return variable +"="+ value + "->"+String.valueOf(address);
 	}
