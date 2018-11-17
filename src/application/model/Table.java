@@ -34,10 +34,14 @@ public class Table {
 	}
 	public void modify(String s) {
 		String [] tokens = s.split(" ");
+		String variable;
 		String value = "";
 		String use = "";
 		int currentValue;
+		double currentValueD;
+		float currentValueF;
 		int flagCome = 0;
+		int flagStopAdding;
 		
 		//int =1;
 		//char=2;
@@ -45,7 +49,61 @@ public class Table {
 		//double=4;
 		
 		
+		if (tokens.length == 1) {
+			variable = tokens[0];
+
+			if(variable.contains("++") ) {
+				
+				variable=variable.replace("++;", "");
+				//value = Integer.parseInt(tokens[0])++;
+				for (Variable a: table) {
+					if(variable.equals(a.getVariable())) {
+						if(a.getValueType() == 1) {
+							currentValue = Integer.parseInt(a.getValue()) + 1;
+							a.setValue(String.valueOf(currentValue));
+						}
+						if(a.getValueType() == 3) {
+							currentValueD = Double.parseDouble(a.getValue()) + 1;
+							a.setValue(String.valueOf(currentValueD));
+						}
+						if(a.getValueType() == 4) {
+							currentValueF = Float.parseFloat(a.getValue()) + 1;
+							a.setValue(String.valueOf(currentValueF));
+						}
+						
+					}
+				}
+				
+				
+			}
+			
+			if(variable.contains("--") ) {
+				
+				variable=variable.replace("--;", "");
+				//value = Integer.parseInt(tokens[0])++;
+				for (Variable a: table) {
+					if(variable.equals(a.getVariable())) {
+						if(a.getValueType() == 1) {
+							currentValue = Integer.parseInt(a.getValue()) - 1;
+							a.setValue(String.valueOf(currentValue));
+						}
+						if(a.getValueType() == 3) {
+							currentValueD = Double.parseDouble(a.getValue()) - 1;
+							a.setValue(String.valueOf(currentValueD));
+						}
+						if(a.getValueType() == 4) {
+							currentValueF = Float.parseFloat(a.getValue()) - 1;
+							a.setValue(String.valueOf(currentValueF));
+						}
+						
+					}
+				}
+		}
+			
+			
+	}
 		
+		// This will only work if there is a an equal and assigning new values
 		if(tokens.length > 1) {
 			if ("=".equals(tokens[1])) {
 				for (Variable x: table) {
