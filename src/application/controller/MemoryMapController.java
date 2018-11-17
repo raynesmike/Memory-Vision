@@ -38,7 +38,7 @@ public class MemoryMapController implements Initializable{
 	    
     	//table.setItems(getVariable());
     	for(Variable y: code.getTable().getTable()) {
-    		System.out.println(y.toString());
+    		//System.out.println(y.toString());
 
         	table1.add(y);
         }

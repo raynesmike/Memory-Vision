@@ -1,6 +1,5 @@
 package application.model;
 
-import java.util.ArrayList;
 
 public class Variable {
 	private String variable;
@@ -60,7 +59,7 @@ public class Variable {
 			Integer.parseInt(val);
 			this.value = val;
 		}catch(NumberFormatException e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			this.value = "Invalid Type";
 		}
 		
@@ -83,7 +82,7 @@ public class Variable {
 			Float.parseFloat(val);
 			this.value = val;
 		}catch(NumberFormatException e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			this.value = "Invalid Type";
 		}
 	}
@@ -97,7 +96,7 @@ public class Variable {
 			Double.parseDouble(val);
 			this.value = val;
 		}catch(NumberFormatException e){
-			e.printStackTrace();
+			//e.printStackTrace();
 			this.value = "Invalid Type";
 		}
 	}
@@ -118,9 +117,11 @@ public class Variable {
 		this.address = address;
 	}
 	public String getValue() {
+		
 		return value;
 	}
 	public void setValue(String value) {
+		//checkType(value);
 		this.value = value;
 	}
 	

@@ -41,31 +41,52 @@ public class Code {
 	public void readPerLine( String line ) {
 		String[] word =line.split(" ");
 		int addSize = 0;
+		int curAdd;
+		int prevAdd = curAddress;
 		// add the variables being classified.
 		switch(word[0]){
 			case "int":
 				//System.out.print(word[0]);
 				addSize=4;
-				curAddress = table.classifyLine(line, curAddress, addSize, 1);
+				curAdd = curAddress = table.classifyLine(line, curAddress, addSize, 1);
 				
+				while ((curAdd - prevAdd) % 4 != 0 ) {
+					curAdd ++;
+				}
+				curAddress=curAdd;
+
 				break;
 			case "char":
 				//System.out.println(word[0]);
 				addSize=1;
-				curAddress = table.classifyLine(line, curAddress, addSize, 2);
-				break;
+				curAdd = curAddress = table.classifyLine(line, curAddress, addSize, 2);
+				
+				while ((curAdd - prevAdd) % 4 != 0 ) {
+					curAdd ++;
+				}
+				curAddress=curAdd;break;
 			case "float":
 				//System.out.println(word[0]);
 				addSize=8;
-				curAddress = table.classifyLine(line, curAddress, addSize, 3);
+				curAdd = curAddress = table.classifyLine(line, curAddress, addSize, 3);
+				
+				while ((curAdd - prevAdd) % 4 != 0 ) {
+					curAdd ++;
+				}
+				curAddress=curAdd;
 				break;
 			case "double":
 				//System.out.println(word[0]);
 				addSize=8;
-				curAddress = table.classifyLine(line, curAddress, addSize, 4);
+				curAdd = curAddress = table.classifyLine(line, curAddress, addSize, 4);
+				
+				while ((curAdd - prevAdd) % 4 != 0 ) {
+					curAdd ++;
+				}
+				curAddress=curAdd;
 				break;
 			default: // actions
-			    //this.table.modify(line);
+			    table.modify(line);
 				
 			    break;
 		}

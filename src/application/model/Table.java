@@ -10,7 +10,7 @@ public class Table {
 	private int address;
 	private int currAddress;
 	private int startAddress;
-	private Variable newVar;
+	//private Variable newVar;
 	// TODO look for the variable name
 	
 	// TODO assign address
@@ -33,11 +33,66 @@ public class Table {
 		this.address = address;
 	}
 	public void modify(String s) {
-		System.out.println(s);
+		String [] tokens = s.split(" ");
+		String value = "";
+		String use = "";
+		if(tokens.length > 1) {
+			if ("=".equals(tokens[1])) {
+			
+				for (Variable x: table) {
+					if (tokens[0].equals(x.getVariable())) {
+						for(int i = 2; i < tokens.length; i++) {
+							
+							use += tokens[i] + " ";
+						}
+						use = use.replace(";", "");
+						this.operation(use);
+						
+						x.setValue(tokens[tokens.length-1].replace(";", ""));
+						System.out.println(x.getValue());
+					}
+					
+				}
+			}
+		}
+	}
+	public String operation(String use){
+		
+		String tokens[] = use.split(" ");
+		String sum = "0";
+		
+		for (int i = 0; i < tokens.length; i+=2) {
+			System.out.println(tokens.length-1 + "----" +i);
+			System.out.println("----");
+			System.out.println(sum+"  +  "+tokens[i]);
+			sum = this.calculate(sum, "+", tokens[i] );
+			System.out.println(sum+"-----@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+		}
+		
+		
+		
+		return sum;
 	}
 	
+	public String calculate(String one, String oper, String two ) {
+		String value = "";
+		System.out.println(one + oper + two);
+		switch(oper) {
+		case "+":
+			value = String.valueOf((Integer.parseInt(one) + Integer.parseInt(two)));
+			System.out.println(value +"@@@@@@@@@@@@DDDDDDDDDDDDDDDDDIIIIIIIIIIIIIIINNNNNNNNNNNNNNGGGGGGGGGGGGGGGG");
+			break;
+			default:
+				System.out.println("I FUCKING HATE THIS");
+				break;
+		}
+		
+		return value;
+	}
+	
+	
 	public int classifyLine(String s, int curAdd , int addSize, int type) {
-		newVar = new Variable();
+		//newVar = new Variable();
 		String[] words =s.split(" ");
 		int pointer = 0;
 		int lenOfPType = words[0].length();
@@ -67,10 +122,10 @@ public class Table {
 		//if Array then send to Array Class v[0],v[1],v[2] to add this table
 		
 		if(flagArray==1) {
-			curAdd=this.assignArray(varName, value, curAdd, addSize, pointer, type);
+			curAdd=this.assignArray(varName.trim(), value, curAdd, addSize, pointer, type);
 		
 		}else {	
-			Variable new1 = new Variable(varName, curAdd, value, pointer, type);
+			Variable new1 = new Variable(varName.trim(), curAdd, value, pointer, type);
 			//new1.valueType(pointer);
 			curAdd+=addSize;
 			table.add(new1);
@@ -89,6 +144,7 @@ public class Table {
 			Variable new1 = new Variable(varName, curAdd, tokens[i], pointer, type);
 			curAdd +=addSize;
 			table.add(new1);
+			
 			
 			//System.out.println(jammy.toString());
 		}
