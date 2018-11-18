@@ -35,6 +35,7 @@ public class Table {
 	public void modify(String s) {
 		String [] tokens = s.split(" ");
 		String variable;
+		int valueType =0;
 		String value = "";
 		String use = "";
 		int currentValue;
@@ -110,6 +111,7 @@ public class Table {
 					if (tokens[0].equals(x.getVariable())) {
 						
 						if(x.getValueType() == 1 || x.getValueType() == 3 || x.getValueType() == 4) {
+							valueType = x.getValueType();
 							for(int i = 2; i < tokens.length; i++) {
 								//System.out.println(tokens[i].replace(";", "") + "-----" +x.getVariable());
 								for(Variable y: table) {
@@ -121,7 +123,7 @@ public class Table {
 								use += tokens[i] + " ";
 							}
 							use = use.replace(";", "");
-							value = this.operation(use);
+							value = this.operation(use,valueType);
 							
 							x.setValue(value);
 							//System.out.println(x.getValue());
@@ -164,7 +166,7 @@ public class Table {
 			}
 		}
 	}
-	public String operation(String use){
+	public String operation(String use, int valueType){
 		
 		String tokens[] = use.split(" ");
 		String sum = "0";
@@ -173,7 +175,7 @@ public class Table {
 			//System.out.println(tokens.length-1 + "----" +i);
 			//System.out.println("----");
 			//System.out.println(sum+"  +  "+tokens[i]);
-			sum = this.calculate(sum, "+", tokens[i] );
+			sum = this.calculate(sum, "+", tokens[i], valueType);
 			//System.out.println(sum+"-----@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		}
 		
@@ -182,12 +184,21 @@ public class Table {
 		return sum;
 	}
 	
-	public String calculate(String one, String oper, String two ) {
+	public String calculate(String one, String oper, String two , int valueType) {
 		String value = "";
 		//System.out.println(one + oper + two);
 		switch(oper) {
 		case "+":
-			value = String.valueOf((Integer.parseInt(one) + Integer.parseInt(two)));
+			if(valueType==1) {
+				value = String.valueOf((Integer.parseInt(one) + Integer.parseInt(two)));
+			}
+			if(valueType==3) {
+				value = String.valueOf((Double.parseDouble(one) + Double.parseDouble(two)));
+			}
+			if(valueType==4) {
+				value = String.valueOf((Float.parseFloat(one) + Float.parseFloat(two)));
+			}
+			
 			//System.out.println(value +"@@@@@@@@@@@@DDDDDDDDDDDDDDDDDIIIIIIIIIIIIIIINNNNNNNNNNNNNNGGGGGGGGGGGGGGGG");
 			break;
 			default:
