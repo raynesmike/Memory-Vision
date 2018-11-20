@@ -7,6 +7,10 @@ public class Variable {
 	private int address;
 	private int pointerType;
 	private int valueType;
+	private boolean sPointer;
+	private int sPointVal;
+	private boolean dPointer;
+	private int dPointVal;
 	/**
 	 * Constructor
 	 * @param name
@@ -19,8 +23,16 @@ public class Variable {
 		this.pointerType = pointer;
 		this.address = address;
 		this.valueType = type;
-		this.checkType(val.trim());
+		this.sPointer = false;
+		this.dPointer = false;
 		
+		this.checkType(val.trim());
+		if(this.pointerType == 1) {
+			this.sPointer = true;
+		}
+		if(this.pointerType == 2) {
+			this.dPointer = true;
+		}
 	}
 	public Variable() {
 		this.variable = "";
@@ -43,6 +55,7 @@ public class Variable {
 		if (valueType == 4 && pointerType == 0) {
 			this.doubleType(val);
 		}
+		
 		
 		//this.value = val;
 	}

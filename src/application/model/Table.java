@@ -167,46 +167,110 @@ public class Table {
 		}
 	}
 	public String operation(String use, int valueType){
-		
+		System.out.println(use);
 		String tokens[] = use.split(" ");
-		String sum = "0";
+		String total = "0";
+		String arith = "";
+		String total2 = "0";
+		String total3 = "0";
+		int counter = 0;
+		int counter1 = 0;
+		int counter2 = 0;
 		
 		for (int i = 0; i < tokens.length; i+=2) {
 			//System.out.println(tokens.length-1 + "----" +i);
-			//System.out.println("----");
+			System.out.println("-------------");
 			//System.out.println(sum+"  +  "+tokens[i]);
-			sum = this.calculate(sum, "+", tokens[i], valueType);
+			if(i < tokens.length-1) {
+				arith = tokens[i+1];
+				System.out.println(arith);
+			}
+			
+			total = this.calculate(tokens[i], arith, total, valueType);
+			
+			if(arith.equals("-") && valueType == 1) {
+				if(counter % 2 != 0) {
+					total2 = String.valueOf((Integer.parseInt(total) * -1));
+				} else {
+					total2 = String.valueOf((Integer.parseInt(total2) - Integer.parseInt(tokens[i])));
+				}
+				counter++;
+			} 
+			else if(arith.equals("+") && valueType == 1){
+				total2 = String.valueOf(Integer.parseInt(total2) + Integer.parseInt(tokens[i]));
+			}
+			if(arith.equals("-") && valueType == 3) {
+				if(counter % 2 != 0) {
+					total2 = String.valueOf((Double.parseDouble(total) * -1));
+				} else {
+					total2 = String.valueOf((Double.parseDouble(total2) - Double.parseDouble(tokens[i])));
+				}
+				counter1++;
+			} 
+			else if(arith.equals("+") && valueType == 3){
+				total2 = String.valueOf(Double.parseDouble(total2) + Double.parseDouble(tokens[i]));
+			}
+			if(arith.equals("-") && valueType == 4) {
+				if(counter % 2 != 0) {
+					total2 = String.valueOf((Float.parseFloat(total) * -1));
+				} else {
+					total2 = String.valueOf((Float.parseFloat(total2) - Float.parseFloat(tokens[i])));
+				}
+				counter2++;
+			} 
+			else if(arith.equals("+") && valueType == 4){
+				total2 = String.valueOf(Float.parseFloat(total2) + Float.parseFloat(tokens[i]));
+			}
 			//System.out.println(sum+"-----@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
 		}
 		
+			return total2;
 		
-		
-		return sum;
 	}
 	
 	public String calculate(String one, String oper, String two , int valueType) {
 		String value = "";
+		String sec = "";
 		//System.out.println(one + oper + two);
 		switch(oper) {
 		case "+":
-			if(valueType==1) {
+			if(valueType == 1) {
 				value = String.valueOf((Integer.parseInt(one) + Integer.parseInt(two)));
 			}
-			if(valueType==3) {
+			if(valueType == 3) {
 				value = String.valueOf((Double.parseDouble(one) + Double.parseDouble(two)));
 			}
-			if(valueType==4) {
+			if(valueType == 4) {
 				value = String.valueOf((Float.parseFloat(one) + Float.parseFloat(two)));
 			}
 			
 			//System.out.println(value +"@@@@@@@@@@@@DDDDDDDDDDDDDDDDDIIIIIIIIIIIIIIINNNNNNNNNNNNNNGGGGGGGGGGGGGGGG");
+			//return value;
+			break;
+		case "-":
+			if(valueType == 1) {
+				System.out.println("this = " + (Integer.parseInt(one) - Integer.parseInt(two)));
+				value = String.valueOf((((Integer.parseInt(one)) - (Integer.parseInt(two)))));
+			}
+			if(valueType == 3) {
+				value = String.valueOf((Double.parseDouble(one) - Double.parseDouble(two)));
+			}
+			if(valueType == 4) {
+				value = String.valueOf((Float.parseFloat(one) - Float.parseFloat(two)));
+			}
+			//return sec;
+			//System.out.println(value +"@@@@@@@@@@@@DDDDDDDDDDDDDDDDDIIIIIIIIIIIIIIINNNNNNNNNNNNNNGGGGGGGGGGGGGGGG");
+			//return sec;
 			break;
 			default:
 				//System.out.println("I FUCKING HATE THIS");
 				break;
 		}
-		
-		return value;
+		//if(oper.equals("-")) {
+		//	return String.valueOf(Integer.parseInt(value) * -1);
+		//} else {
+			return value;
+		//}
 	}
 	
 	
@@ -217,19 +281,21 @@ public class Table {
 		int lenOfPType = words[0].length();
 		int flagArray = 0;
 		int flagPassEq = 0;
+		int flagAmper = 0;
 		int cntElement = 0;
-		String varName="";
-		String value="";
+		String varName = "";
+		String value = "";
 		for(int i= lenOfPType+1; i < s.length(); i++) {
 			//System.out.print(s.charAt(i));
 			/**
 			 * stop when end or after the variable name;
 			 */
 			if(flagPassEq==1 && s.charAt(i)!=';' && s.charAt(i) != '{' && s.charAt(i) != '}' 
-				&& s.charAt(i) != '\''&&s.charAt(i) != '\"') {
+				&& s.charAt(i) != '\''&&s.charAt(i) != '\"' && s.charAt(i) != '&' ) {
 					value+=s.charAt(i);
 			}
 			if(s.charAt(i)=='=') { flagPassEq = 1;} //this will prevent counting * after '='
+			if(s.charAt(i)=='&' && flagPassEq==1) { flagAmper++;}
 			if(s.charAt(i)==',') { cntElement++; } // count the element
 			if(s.charAt(i)=='[' && flagPassEq==0) { flagArray=1; i+=2;} //classify as Array so that we can assign ea element.
 			if(s.charAt(i)=='*' && flagPassEq==0) { pointer++;	} //increase if *ptr or **ptr
@@ -246,12 +312,46 @@ public class Table {
 		}else {	
 			Variable new1 = new Variable(varName.trim(), curAdd, value, pointer, type);
 			//new1.valueType(pointer);
+			//if this is a sPointer and assigning
+			if(pointer > 0 && flagPassEq == 1) {
+				System.out.println("DOOR");
+				pointerAssign(varName, value, flagAmper, pointer);
+				System.out.println("DONE");
+			}
+			
 			curAdd+=addSize;
 			table.add(new1);
 		}
 		return curAdd;
 		
 	}
+	
+	public void pointerAssign(String name, String value, int amper, int pointer) {
+		//System.out.println(value);
+		System.out.println("ENTERED");
+		for(Variable a: table) {
+			//TODO: put *p in the arrayList
+			System.out.println("CHECK");
+			if(name.equals(a.getVariable())) {
+				System.out.println("FIRST IF");
+				for(Variable b: table) {
+					if(value.equals(String.valueOf(b.getAddress()))) {
+						a.setValue(String.valueOf(b.getAddress()));
+						System.out.println(a.getValue());
+					}
+				}
+			}
+		}
+	}
+		/*for(Variable x: table) {
+			if(value.equals(x.getVariable())) {
+				if(x.getPointerType() == pointer) {
+					x.setValue(String.valueOf(x.getAddress()));
+				}
+			}
+		}*/
+	
+	
 	public int assignArray(String name, String val,int curAdd,int addSize, int pointer, int type) {
 		
 		String varName ="";
