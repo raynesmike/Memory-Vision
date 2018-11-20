@@ -99,10 +99,9 @@ public class Table {
 						
 					}
 				}
+			}
+				
 		}
-			
-			
-	}
 		
 		// This will only work if there is a an equal and assigning new values
 		if(tokens.length > 1) {
@@ -228,7 +227,7 @@ public class Table {
 		
 	}
 	
-	public String calculate(String one, String oper, String two , int valueType) {
+	public  String calculate(String one, String oper, String two , int valueType) {
 		String value = "";
 		String sec = "";
 		//System.out.println(one + oper + two);

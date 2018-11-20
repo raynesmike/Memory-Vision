@@ -45,15 +45,12 @@ public class Code {
 		int prevAdd = curAddress;
 		// add the variables being classified.
 		switch(word[0]){
-		default: // actions
-		    table.modify(line);
-			
-		    break;
+
 			case "int":
 				//System.out.print(word[0]);
 				addSize=4;
-				curAdd = curAddress = table.classifyLine(line, curAddress, addSize, 1);
-				
+				curAddress = table.classifyLine(line, curAddress, addSize, 1);
+				curAdd = curAddress;
 				while ((curAdd - prevAdd) % 4 != 0 ) {
 					curAdd ++;
 				}
@@ -63,17 +60,18 @@ public class Code {
 			case "char":
 				//System.out.println(word[0]);
 				addSize=1;
-				curAdd = curAddress = table.classifyLine(line, curAddress, addSize, 2);
-				
+				curAddress = table.classifyLine(line, curAddress, addSize, 2);
+				curAdd = curAddress;
 				while ((curAdd - prevAdd) % 4 != 0 ) {
 					curAdd ++;
 				}
 				curAddress=curAdd;break;
 			case "float":
 				//System.out.println(word[0]);
-				addSize=8;
-				curAdd = curAddress = table.classifyLine(line, curAddress, addSize, 3);
-				
+				addSize=8; 
+				curAddress= table.classifyLine(line, curAddress, addSize, 3);
+
+				curAdd = curAddress;
 				while ((curAdd - prevAdd) % 4 != 0 ) {
 					curAdd ++;
 				}
@@ -82,13 +80,18 @@ public class Code {
 			case "double":
 				//System.out.println(word[0]);
 				addSize=8;
-				curAdd = curAddress = table.classifyLine(line, curAddress, addSize, 4);
-				
+				 
+				curAddress = table.classifyLine(line, curAddress, addSize, 4);
+				curAdd = curAddress;
 				while ((curAdd - prevAdd) % 4 != 0 ) {
 					curAdd ++;
 				}
 				curAddress=curAdd;
 				break;
+			default: // actions
+			    table.modify(line);
+				
+			    break;
 
 		}
 	}

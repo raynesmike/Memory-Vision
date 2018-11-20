@@ -1,7 +1,8 @@
 package application.model;
 
 
-public class Variable {
+public class Variable extends Table{
+	private static final Table Table = null;
 	private String variable;
 	private String value;
 	private int address;
@@ -19,6 +20,11 @@ public class Variable {
 	 */
 
 	public Variable(String name, int address, String val, int pointer, int type) {
+		
+//		String [] tokens = val.split(" ");
+//		if (tokens.length > 1) {
+//			val = Table.calculate(tokens[0], tokens[1], tokens[2], type);
+//		}
 		this.variable = name;
 		this.pointerType = pointer;
 		this.address = address;
