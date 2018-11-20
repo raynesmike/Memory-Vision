@@ -41,7 +41,7 @@ public class MemoryMapController implements Initializable{
 
 		table1 = FXCollections.observableArrayList();
 
-		Variable empty = new Variable("Empty",0 , "Empty", 0, 0);
+		Variable empty = new Variable("Starting",0 , "Empty", 0, 0);
 		emptyTable = FXCollections.observableArrayList();
 		emptyTable.add(empty);
 		
