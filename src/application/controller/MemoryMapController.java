@@ -39,27 +39,28 @@ public class MemoryMapController implements Initializable{
     
 	public void generate() {
 
-		table1 = FXCollections.observableArrayList();
-
-		Variable empty = new Variable("Starting",0 , "Empty", 0, 0);
-		emptyTable = FXCollections.observableArrayList();
-		emptyTable.add(empty);
-		
-		String codeString = codeTextArea.getText();
-		line = codeString.split("\\n");
-		table.setItems(emptyTable);
-//		ObservableList<Variable> table1 = FXCollections.observableArrayList();
-//		code  = new Code();
-//		String codeString = codeTextArea.getText();
-//		code.readCode(codeString);		
-//	    
-//    	//table.setItems(getVariable());
-//    	for(Variable y: code.getTable().getTable()) {
-//    		//System.out.println(y.toString());
+//		table1 = FXCollections.observableArrayList();
 //
-//        	table1.add(y);
-//        }
-//    	
+//		Variable empty = new Variable("Starting",0 , "Empty", 0, 0);
+//		emptyTable = FXCollections.observableArrayList();
+//		emptyTable.add(empty);
+//		
+//		String codeString = codeTextArea.getText();
+//		line = codeString.split("\\n");
+//		table.setItems(emptyTable);
+		
+		ObservableList<Variable> table1 = FXCollections.observableArrayList();
+		code  = new Code();
+		String codeString = codeTextArea.getText();
+		code.readCode(codeString);		
+	    
+    	//table.setItems(getVariable());
+    	for(Variable y: code.getTable().getTable()) {
+    		//System.out.println(y.toString());
+
+        	table1.add(y);
+        }
+    	
     	table.setItems(table1);
 	}
     

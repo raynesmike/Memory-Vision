@@ -312,29 +312,35 @@ public class Table {
 			Variable new1 = new Variable(varName.trim(), curAdd, value, pointer, type);
 			//new1.valueType(pointer);
 			//if this is a sPointer and assigning
+			curAdd+=addSize;
+			table.add(new1);
+			
 			if(pointer > 0 && flagPassEq == 1) {
 				System.out.println("DOOR");
-				pointerAssign(varName, value, flagAmper, pointer);
+				pointerAssign(varName.trim(), value.trim(), flagAmper, pointer);
 				System.out.println("DONE");
 			}
 			
-			curAdd+=addSize;
-			table.add(new1);
+			
 		}
 		return curAdd;
 		
 	}
 	
 	public void pointerAssign(String name, String value, int amper, int pointer) {
-		//System.out.println(value);
+		System.out.println(value);
 		System.out.println("ENTERED");
 		for(Variable a: table) {
 			//TODO: put *p in the arrayList
 			System.out.println("CHECK");
+			System.out.println(a.getVariable());
+			
 			if(name.equals(a.getVariable())) {
 				System.out.println("FIRST IF");
 				for(Variable b: table) {
-					if(value.equals(String.valueOf(b.getAddress()))) {
+					System.out.println("Other");
+					System.out.println(b.getAddress());
+					if(value.equals(String.valueOf(b.getVariable()))) {
 						a.setValue(String.valueOf(b.getAddress()));
 						System.out.println(a.getValue());
 					}
@@ -351,7 +357,7 @@ public class Table {
 		}*/
 	
 	
-	public int assignArray(String name, String val,int curAdd,int addSize, int pointer, int type) {
+	public int assignArray(String name, String val, int curAdd,int addSize, int pointer, int type) {
 		
 		String varName ="";
 		String tokens[] = val.split(",");
