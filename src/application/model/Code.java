@@ -45,6 +45,10 @@ public class Code {
 		int prevAdd = curAddress;
 		// add the variables being classified.
 		switch(word[0]){
+		default: // actions
+		    table.modify(line);
+			
+		    break;
 			case "int":
 				//System.out.print(word[0]);
 				addSize=4;
@@ -85,10 +89,7 @@ public class Code {
 				}
 				curAddress=curAdd;
 				break;
-			default: // actions
-			    table.modify(line);
-				
-			    break;
+
 		}
 	}
 
