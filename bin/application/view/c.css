@@ -1,0 +1,85 @@
+
+.caret {
+    -fx-stroke: black;
+    -fx-stroke-width: 2;
+}
+
+.code-area .text {
+	-fx-font-family: DroidSansMono; 
+	/*-fx-font-size: 20px; */
+	
+	
+}
+
+.code-area .paragraph-box .paragraph-text {
+    -fx-padding: 2 2 2 10;
+    
+}
+
+.lineno {
+	-fx-padding: 4 6 0 5;
+	-fx-background-radius: 2, 2;
+}
+.code-area {
+    -fx-background-color: linear-gradient(to bottom, derive(-fx-text-box-border, -10%), -fx-text-box-border),
+    linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), -fx-control-inner-background);
+    -fx-background-insets: 0, 1;
+    -fx-background-radius: 10, 10;
+    -fx-line-spacing: 2;
+    
+
+}
+
+
+
+.keywords {
+    -fx-fill:red;
+    -fx-font-weight: bold;
+}
+
+
+
+.operators {
+    -fx-fill:#001F3F;
+    -fx-font-weight: bold;
+}
+.types {
+    -fx-fill:#0074D9;
+    -fx-font-weight: bold;
+}
+
+.types.char {
+    -fx-fill:red;
+    -fx-font-weight: bold;
+}
+
+.storage-class {
+    -fx-fill:#7FDBFF;
+    -fx-font-weight: bold;
+}
+.boolean {
+    -fx-fill:#39CCCC;
+    -fx-font-weight: bold;
+}
+.common-defines {
+    -fx-fill:#3D9970;
+    -fx-font-weight: bold;
+}
+.standard-streams {
+    -fx-fill:#2ECC40;
+    -fx-font-weight: bold;
+}
+.signals {
+    -fx-fill:#01FF70;
+    -fx-font-weight: bold;
+}
+.comment {
+	-fx-fill: cadetblue;
+}
+.string {
+    -fx-fill:#FF851B;
+    -fx-font-weight: bold;
+}
+.paragraph-box:has-caret {
+    -fx-background-color: #f2f9fc;
+}

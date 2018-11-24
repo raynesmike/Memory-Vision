@@ -43,7 +43,7 @@ public class MainController implements Initializable {
 		 * } });
 		 */
 	}
-
+ 
 	@FXML
 	private void open_signup(ActionEvent event) {
 		TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);

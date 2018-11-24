@@ -14,12 +14,13 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("view/MemoryMap.fxml"));        
         Scene scene = new Scene(root);
-        scene.setFill(Color.TRANSPARENT);
-        stage.initStyle(StageStyle.TRANSPARENT);
+        //scene.setFill(Color.TRANSPARENT);
+       // stage.initStyle(StageStyle.TRANSPARENT);
         stage.setScene(scene);
+        
         stage.show();
     }
-
+ 
     
     public static void main(String[] args) {
         launch(args);

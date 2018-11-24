@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root fx:id="root_pane" prefHeight="68.0" prefWidth="200.0" type="StackPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #E9AB44; -fx-background-radius: 5 5 5 5;">
+         <children>
+            <HBox prefHeight="148.0" prefWidth="200.0">
+               <children>
+                  <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-color: #4A8895; -fx-background-radius: 5 5 5 5;">
+                     <children>
+                        <JFXButton fx:id="btnAddress" ripplerFill="WHITE" text="1024">
+                           <font>
+                              <Font name="System Bold" size="10.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </StackPane>
+                  <StackPane prefHeight="42.0" prefWidth="200.0" style="-fx-background-radius: 0 5 0 0; -fx-background-color: #E9AB44;">
+                     <children>
+                        <JFXButton fx:id="btnType" ripplerFill="WHITE" text="int">
+                           <font>
+                              <Font name="System Bold" size="10.0" />
+                           </font>
+                        </JFXButton>
+                     </children>
+                  </StackPane>
+               </children>
+            </HBox>
+            <StackPane prefHeight="150.0" prefWidth="200.0" style="-fx-background-radius: 0, 0 0, 0; -fx-background-color: #E9AB44;" />
+            <StackPane prefHeight="177.0" prefWidth="200.0" style="-fx-background-color: rgb(255,255,255,0.87); -fx-background-radius: 0 0 5 5;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <JFXButton fx:id="btnVariable" text="num" />
+                        <JFXButton text="=" />
+                        <JFXButton fx:id="btnValue" text="9" />
+                     </children>
+                  </HBox>
+               </children>
+            </StackPane>
+         </children>
+      </VBox>
+   </children>
+</fx:root>
