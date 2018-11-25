@@ -13,9 +13,11 @@ import org.reactfx.Subscription;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
+import com.jfoenix.controls.JFXToggleNode;
 
 import application.model.Code;
 import application.model.Variable;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,6 +26,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
+import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
@@ -35,7 +38,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Effect;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
@@ -57,15 +62,14 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-
+import com.jfoenix.controls.events.JFXDialogEvent;
 
 
 
 
 public class MemoryMapController implements Initializable{
 	
-	@FXML
-	private JFXButton userRules;
+	
     @FXML
     private TableView<Variable> table;
     @FXML
@@ -93,6 +97,8 @@ public class MemoryMapController implements Initializable{
     @FXML
     private Stage stage;
     @FXML
+    JFXToggleNode btnHelp;
+    @FXML
     CodeArea codeArea;
     @FXML
     Pane pane;
@@ -100,6 +106,9 @@ public class MemoryMapController implements Initializable{
     Circle circleStart;
     @FXML
     Circle circleEnd;
+    
+    @FXML
+    FontAwesomeIcon helpIcon;
     private Code code; 
     private ObservableList<Variable> variableList,emptyTable;
     private int index = 0;
@@ -145,26 +154,62 @@ public class MemoryMapController implements Initializable{
     	
 	}
 	
-	public void loadDialog() {
+	public void loadDialog(ActionEvent event) {
+		
+		if(btnHelp.isDisable()==false) {
+			
+		BoxBlur blur = new BoxBlur(3, 3, 3);
+		
 		JFXDialogLayout content = new JFXDialogLayout();
 		content.setHeading(new Text("User Rules"));
 		content.setBody(new Text(
-				"• NO COMMENTS!\n" + 
-				"• \"x++\" and \"x--\" must be one string (NO SPACES)\n" + 
-				"• NO +=, -=, *=, /=\n" + 
-				"• Please enter correct C code, while we do check for some errors, we aren't garbage collectors\n"));
-		JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
-		JFXButton buttonn = new JFXButton("Done");
+				" - NO COMMENTS!\n" + 
+				"- \"x++\" and \"x--\" must be one string (NO SPACES)\n" + 
+				"- NO +=, -=, *=, /=\n" + 
+				"- Please enter correct C code, while we do check for some errors, we aren't garbage collectors\n"));
+		 
 		
-		buttonn.setOnAction(new EventHandler<ActionEvent>() {
+		StackPane dialogStackPane = new StackPane();
+		//dialogStackPane.autosize();
+		JFXDialog dialog = new JFXDialog(dialogStackPane, content, JFXDialog.DialogTransition.CENTER, true);
+		
+		
+		JFXButton btnDone = new JFXButton("Done");
+		
+		btnDone.addEventHandler(ActionEvent.ACTION,(e) -> {dialog.close();});
+		
+		/*btnDone.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent e) {
 				dialog.close();
+				
 			}
-		});
+		});*/
 		
-		content.setActions(buttonn);
+		
+		anchor_root.getChildren().add(dialogStackPane);
+		
+		content.setActions(btnDone);
+		
+		AnchorPane.setTopAnchor(dialogStackPane, (editor.getHeight() - content.getPrefHeight()) / 2);
+		AnchorPane.setLeftAnchor(dialogStackPane, (editor.getWidth() - content.getPrefWidth()) / 2);
 		dialog.show();
+		dialog.setOnDialogClosed((JFXDialogEvent event1) -> {
+            editor.setEffect(null);
+            pane.setEffect(null);
+            btnHelp.setDisable(false);
+           // btnHelp.setSelected(false);
+        });
+		
+		// blurs background
+        editor.setEffect(blur);
+        pane.setEffect(blur);
+        
+        
+        btnHelp.setDisable(true);
+		
+		}
+		
 	}
     
 	public void next() {
@@ -227,6 +272,20 @@ public class MemoryMapController implements Initializable{
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
+		// help button
+		btnHelp = new JFXToggleNode();
+		
+		btnHelp.setGraphic(helpIcon);
+		
+		btnHelp.setLayoutX(helpIcon.getLayoutX() + 35);
+		btnHelp.setLayoutY(helpIcon.getLayoutY() - 15);
+		anchor_root.getChildren().add(btnHelp);
+		
+		btnHelp.setOnAction(this::loadDialog);
+		// makes the table's default message empty
+		table.setPlaceholder(new Label(""));
+		
+		// demonstration code
 		defaultCode = "int v[] = {20, 30, 40};\n" + 
 				"int x = 20;\n" + 
 				"int y = 30;\n" + 
@@ -240,7 +299,10 @@ public class MemoryMapController implements Initializable{
 				"name = last;\n" + 
 				"v[0]++;\n" + 
 				"int *p = &x;";
-		
+		 
+		// hides table focus border
+		table.setStyle("-fx-faint-focus-color: transparent; -fx-focus-color: transparent; ");
+	//	table.setStyle("-fx-faint-focus-color: transparent;");
 		
 		lineNumber = 0;
 		//Font.loadFont(getClass().getResourceAsStream("../view/DroidSansMono.ttf"), 30);

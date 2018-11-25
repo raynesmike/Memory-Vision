@@ -1,3 +1,4 @@
+.root { -fx-focus-color: transparent; }
 .parent{
     -fx-background-color:transparent;
 }

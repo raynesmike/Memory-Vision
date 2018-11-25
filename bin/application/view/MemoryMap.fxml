@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -23,6 +23,7 @@
             </TableView>
             <TextArea fx:id="codeTextArea" layoutX="33.0" layoutY="184.0" prefHeight="319.0" prefWidth="166.0" text="int v[] = {20, 30, 40};&#10;int x = 20;&#10;int y = 30;&#10;char a[] = {'a', 'b', 'c'};&#10;x = 20 + 30;&#10;y = x + 50;&#10;v[1] = 20 + 30;&#10;v[2] = v[1] + 50;&#10;char name = 'r';&#10;char last = 'z';&#10;name = last;&#10;v[0]++;&#10;int *p = &amp;x;" visible="false" />
             <VBox fx:id="nbox" layoutX="413.0" layoutY="60.0" prefHeight="567.0" prefWidth="362.0" spacing="10.0" />
+            <FontAwesomeIcon fx:id="helpIcon" iconName="QUESTION_CIRCLE" layoutX="717.0" layoutY="776.0" size="3em" strokeLineCap="ROUND" wrappingWidth="34.0" />
          </children>
       </Pane>
       <Pane fx:id="editor" layoutX="15.0" layoutY="100.0" prefHeight="608.0" prefWidth="286.0">
@@ -40,10 +41,5 @@
             </JFXButton>
          </children>
       </Pane>
-      <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0">
-         <children>
-            <JFXButton fx:id="userRules" onAction="#loadDialog" text="USER RULES" />
-         </children>
-      </StackPane>
    </children>
 </AnchorPane>
