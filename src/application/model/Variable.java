@@ -140,8 +140,8 @@ public class Variable extends Table{
 		return value;
 	}
 	public void setValue(String value) {
-		//checkType(value);
-		this.value = value;
+		checkType(value);
+		//this.value = value;
 	}
 	
 	public int getPointerType() {

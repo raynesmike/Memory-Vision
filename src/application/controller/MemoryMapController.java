@@ -209,6 +209,8 @@ public class MemoryMapController implements Initializable{
 				"name = last;\n" + 
 				"v[0]++;\n" + 
 				"int *p = &x;";
+		
+		
 		lineNumber = 0;
 		//Font.loadFont(getClass().getResourceAsStream("../view/DroidSansMono.ttf"), 30);
 		
@@ -269,33 +271,98 @@ public class MemoryMapController implements Initializable{
     	addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
     	valueCol.setCellValueFactory(new PropertyValueFactory<>("value"));
     	
-//    	
-//    	VNode node1 = new VNode();
-//    	VNode node2 = new VNode();
-//    	
-//    	
-//    	pane.getChildren().addAll(node1, node2);
-//    	
-//    	node1.setLayoutX(400);
-//    	node1.setLayoutY(40);
-//    	
-//    	
-//    	
-//    	node2.setLayoutX(400);
-//    	node2.setLayoutY(160);
-//        
-//        
-//        CubicCurve curve = createPointerLink(node1, node2);
-//        Path arrow = createArrowHead(curve);
-//        
-//      
-//        
-//        pane.getChildren().addAll(curve, arrow);
-//         
-//        node1.setVariable("ptr");
-//        node1.setAddress("1064");
-//        node1.setValue("&1024");
-//        node1.setType("int *");
+    	
+    	VNode varV0 = new VNode();
+    	VNode varV1 = new VNode();
+    	VNode varV2 = new VNode();
+    	
+    	VNode varX = new VNode();
+    	VNode varY = new VNode();
+    	
+    	VNode varA0 = new VNode();
+    	VNode varA1 = new VNode();
+    	
+    	VNode varA2 = new VNode();
+    	
+    	VNode varName = new VNode();
+    	
+    	VNode varLast = new VNode();
+    	VNode varPtr = new VNode();
+    	
+    	
+    	
+    	
+    	
+    	pane.getChildren().addAll(varV0, varV1, varV2, varX, varY, varA0, varA1, varA2, varName, varLast, varPtr);
+    	
+    	varV0.setLayoutX(400);
+    	varV1.setLayoutX(400);
+    	varV2.setLayoutX(400);
+    	varX.setLayoutX(400);
+    	varY.setLayoutX(400);
+    	varA0.setLayoutX(400);
+    	varA1.setLayoutX(400);
+    	varA2.setLayoutX(400);
+    	varName.setLayoutX(400);
+    	varLast.setLayoutX(400);
+    	varPtr.setLayoutX(400);
+    	
+    	
+        int yy = 40;
+    	varV0.setLayoutY(yy);
+    	varV1.setLayoutY(yy*3);
+    	varV2.setLayoutY(yy*5);
+    	
+    	varX.setLayoutY(yy*7);
+    	varY.setLayoutY(yy*9);
+    	
+    	varA0.setLayoutY(yy*11);
+    	varA1.setLayoutY(yy*13);
+    	varA2.setLayoutY(yy*15);
+    	
+    	varName.setLayoutY(yy*17);
+    	varLast.setLayoutY(yy*19);
+    	varPtr.setLayoutY(yy*21);
+    	
+    	
+        varV0.setAddress("1000");
+        varV0.setValue("20");
+        
+        varV1.setAddress("1004");
+        varV1.setValue("30");
+        
+        varV2.setAddress("1008");
+        varV1.setValue("40");
+        
+        varX.setAddress("1012");
+        varY.setAddress("1016");
+        
+        varA0.setAddress("1017");
+        varA1.setAddress("1018");
+        varA2.setAddress("1019");
+        
+        varName.setAddress("1020");
+        varLast.setAddress("1021");
+        varPtr.setAddress("1022");
+        
+        
+    	
+    	
+    	
+    	
+    	
+    	
+        CubicCurve curve = createPointerLink(varV0, varV1);
+        Path arrow = createArrowHead(curve);
+        
+      
+        
+        pane.getChildren().addAll(curve, arrow);
+         
+        varV0.setVariable("ptr");
+        varV0.setAddress("1064");
+        varV0.setValue("&1024");
+        varV0.setType("int *");
        
 		
 

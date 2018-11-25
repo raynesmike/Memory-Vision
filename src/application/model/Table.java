@@ -168,6 +168,11 @@ public class Table {
 	public String operation(String use, int valueType){
 		System.out.println(use);
 		String tokens[] = use.split(" ");
+		
+		if(tokens.length==1) {
+			return use.trim();
+		}
+		
 		String total = "0";
 		String arith = "";
 		String total2 = "0";
