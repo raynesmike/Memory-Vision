@@ -315,6 +315,7 @@ public class MemoryMapController implements Initializable{
 		// links table.css to the table
 		table.getStylesheets().add(MemoryMapController.class.getResource("../view/table.css").toExternalForm());
 		
+		table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 		
 		
 		
