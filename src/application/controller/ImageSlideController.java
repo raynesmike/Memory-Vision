@@ -24,14 +24,14 @@ public class ImageSlideController implements Initializable {
 	private FontAwesomeIcon indicator1, indicator2, indicator3, forward, backward;
 	
 	int image_index = 0;
-	String images[] = new String[] {"img1.png", "img2.png", "img3.png"};
+	String images[] = new String[] {"img1.gif", "img2.gif", "img3.gif"};
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		
 		try {
-			String img1Path = getClass().getResource("../view/img1.png").toURI().toString();
+			String img1Path = getClass().getResource("../view/img1.gif").toURI().toString();
 			Image img1 = new Image(img1Path);
 			slider_image.setImage(img1);
 			setCircleIcon(indicator1);

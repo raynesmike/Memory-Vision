@@ -61,6 +61,10 @@ public class Variable extends Table{
 		if (valueType == 4 && pointerType == 0) {
 			this.doubleType(val);
 		}
+		if (pointerType == 1) {
+			this.value = val;
+			
+		}
 		
 		
 		//this.value = val;
