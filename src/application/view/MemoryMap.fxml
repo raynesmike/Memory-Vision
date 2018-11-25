@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -39,5 +40,10 @@
             </JFXButton>
          </children>
       </Pane>
+      <StackPane fx:id="stackPane" prefHeight="150.0" prefWidth="200.0">
+         <children>
+            <JFXButton fx:id="userRules" onAction="#loadDialog" text="USER RULES" />
+         </children>
+      </StackPane>
    </children>
 </AnchorPane>

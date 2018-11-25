@@ -10,11 +10,17 @@ import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 import org.reactfx.Subscription;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDialog;
+import com.jfoenix.controls.JFXDialogLayout;
+
 import application.model.Code;
 import application.model.Variable;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Bounds;
@@ -47,6 +53,7 @@ import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -57,6 +64,8 @@ import javafx.stage.Stage;
 
 public class MemoryMapController implements Initializable{
 	
+	@FXML
+	private JFXButton userRules;
     @FXML
     private TableView<Variable> table;
     @FXML
@@ -134,6 +143,28 @@ public class MemoryMapController implements Initializable{
 //    	
 //    	table.setItems(table1);
     	
+	}
+	
+	public void loadDialog() {
+		JFXDialogLayout content = new JFXDialogLayout();
+		content.setHeading(new Text("User Rules"));
+		content.setBody(new Text(
+				"• NO COMMENTS!\n" + 
+				"• \"x++\" and \"x--\" must be one string (NO SPACES)\n" + 
+				"• NO +=, -=, *=, /=\n" + 
+				"• Please enter correct C code, while we do check for some errors, we aren't garbage collectors\n"));
+		JFXDialog dialog = new JFXDialog(stackPane, content, JFXDialog.DialogTransition.CENTER);
+		JFXButton buttonn = new JFXButton("Done");
+		
+		buttonn.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent e) {
+				dialog.close();
+			}
+		});
+		
+		content.setActions(buttonn);
+		dialog.show();
 	}
     
 	public void next() {
@@ -293,7 +324,7 @@ public class MemoryMapController implements Initializable{
     	
     	
     	
-    	pane.getChildren().addAll(varV0, varV1, varV2, varX, varY, varA0, varA1, varA2, varName, varLast, varPtr);
+    	//pane.getChildren().addAll(varV0, varV1, varV2, varX, varY, varA0, varA1, varA2, varName, varLast, varPtr);
     	
     	varV0.setLayoutX(400);
     	varV1.setLayoutX(400);
