@@ -18,9 +18,11 @@ public class SignInController {
 			Scene memoryMapScene = new Scene(memoryMapParent);
 			
 			Stage window  = (Stage) ((Node)event.getSource()).getScene().getWindow();
+			
+			
 			window.setScene(memoryMapScene);
 			window.show();
-			
+			 
 			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

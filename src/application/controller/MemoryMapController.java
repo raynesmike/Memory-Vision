@@ -126,7 +126,7 @@ public class MemoryMapController implements Initializable{
     
     
 	public void generate() {
-
+		clear();
 		variableList = FXCollections.observableArrayList();
 
 		Variable empty = new Variable("Starting",0 , "Empty", 0, 0);
@@ -198,7 +198,7 @@ public class MemoryMapController implements Initializable{
             editor.setEffect(null);
             pane.setEffect(null);
             btnHelp.setDisable(false);
-           // btnHelp.setSelected(false);
+            btnHelp.setSelected(false);
         });
 		
 		// blurs background
@@ -301,7 +301,7 @@ public class MemoryMapController implements Initializable{
 				"int *p = &x;";
 		 
 		// hides table focus border
-		table.setStyle("-fx-faint-focus-color: transparent; -fx-focus-color: transparent; ");
+	//	table.setStyle("-fx-faint-focus-color: transparent; -fx-focus-color: transparent; ");
 	//	table.setStyle("-fx-faint-focus-color: transparent;");
 		
 		lineNumber = 0;
@@ -312,6 +312,8 @@ public class MemoryMapController implements Initializable{
 		// send panPane to back
 		anchor_root.getChildren().get(anchor_root.getChildren().size() - 1).toBack();
 		
+		// links table.css to the table
+		table.getStylesheets().add(MemoryMapController.class.getResource("../view/table.css").toExternalForm());
 		
 		
 		
@@ -450,7 +452,7 @@ public class MemoryMapController implements Initializable{
         
       
         
-        pane.getChildren().addAll(curve, arrow);
+        pane.getChildren().addAll();
          
         varV0.setVariable("ptr");
         varV0.setAddress("1064");
