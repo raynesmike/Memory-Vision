@@ -157,8 +157,8 @@ public class MemoryMapController implements Initializable{
         // step through lines of code until end;
 		if (index < codeArea.getParagraphs().size()) {
 			
-			//index < codeArea.getParagraphs().size()
-	    	table.setItems(emptyTable);
+			
+	    	//table.setItems(emptyTable);
 			code.readCode(line[index]);		
 	    	
 	    	//System.out.println(y.toString());
@@ -166,12 +166,14 @@ public class MemoryMapController implements Initializable{
 	  
 	        variableList.addAll(code.getTable().getVariableList());
 	        
-	    	index++;
+	    	
 	    	
 			codeArea.moveTo(index, 0);
 			lineNumber++;
 		
 	    	table.setItems(variableList);
+	    	index++;
+	    	
 	    	//lineLabel.setText("Line Number: " + String.valueOf(index));
 		}else {
 			//lineLabel.setText("DONE READING");
