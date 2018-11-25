@@ -92,7 +92,7 @@ public class MemoryMapController implements Initializable{
     @FXML
     Circle circleEnd;
     private Code code; 
-    private ObservableList<Variable> table1,emptyTable;
+    private ObservableList<Variable> variableList,emptyTable;
     private int index = 0;
     private String [] line;
     int lineNumber;
@@ -102,12 +102,14 @@ public class MemoryMapController implements Initializable{
     private static final int PAN_PANE_WIDTH = 20_000;
 	private static final int PAN_PANE_HEIGHT = 10_000;
 	private final int NODE_LAYOUT_X = 400;
+	
+	String defaultCode;
     
     
     
 	public void generate() {
 
-		table1 = FXCollections.observableArrayList();
+		variableList = FXCollections.observableArrayList();
 
 		Variable empty = new Variable("Starting",0 , "Empty", 0, 0);
 		emptyTable = FXCollections.observableArrayList();
@@ -154,25 +156,25 @@ public class MemoryMapController implements Initializable{
         
         // step through lines of code until end;
 		if (index < codeArea.getParagraphs().size()) {
-
-
+			
+			//index < codeArea.getParagraphs().size()
 	    	table.setItems(emptyTable);
 			code.readCode(line[index]);		
 	    	
 	    	//System.out.println(y.toString());
-	    	table1.removeAll(code.getTable().getTable());
+	    	variableList.removeAll(code.getTable().getVariableList());
 	  
-	        table1.addAll(code.getTable().getTable());
+	        variableList.addAll(code.getTable().getVariableList());
 	        
 	    	index++;
 	    	
 			codeArea.moveTo(index, 0);
 			lineNumber++;
 		
-	    	table.setItems(table1);
-	    	lineLabel.setText("Line Number: " + String.valueOf(index));
+	    	table.setItems(variableList);
+	    	//lineLabel.setText("Line Number: " + String.valueOf(index));
 		}else {
-			lineLabel.setText("DONE READING");
+			//lineLabel.setText("DONE READING");
 		}
 	}
 	
@@ -184,13 +186,27 @@ public class MemoryMapController implements Initializable{
 		codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
 		code  = new Code();
 
-    	table1.removeAll(code.getTable().getTable());
+    	table.getItems().clear();
 
-    	lineLabel.setText("Line Number: " + String.valueOf(index));
+    	///lineLabel.setText("Line Number: " + String.valueOf(index));
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		
+		defaultCode = "int v[] = {20, 30, 40};\n" + 
+				"int x = 20;\n" + 
+				"int y = 30;\n" + 
+				"char a[] = {'a', 'b', 'c'};\n" + 
+				"x = 20 + 30;\n" + 
+				"y = x + 50;\n" + 
+				"v[1] = 20 + 30;\n" + 
+				"v[2] = v[1] + 50;\n" + 
+				"char name = 'r';\n" + 
+				"char last = 'z';\n" + 
+				"name = last;\n" + 
+				"v[0]++;\n" + 
+				"int *p = &x;";
 		lineNumber = 0;
 		//Font.loadFont(getClass().getResourceAsStream("../view/DroidSansMono.ttf"), 30);
 		
@@ -243,7 +259,7 @@ public class MemoryMapController implements Initializable{
         // when no longer need syntax highlighting and wish to clean up memory leaks
         // run: `cleanupWhenNoLongerNeedIt.unsubscribe();`
 
-        codeArea.replaceText(0, 0, codeTextArea.getText());
+        codeArea.replaceText(0, 0, defaultCode);
         
 		
 		code  = new Code();

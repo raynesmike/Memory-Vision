@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Table {
 
-	private ArrayList<Variable> table;
+	private ArrayList<Variable> variableList;
 	private String variable;
 	private String value;
 	private int address;
@@ -24,7 +24,7 @@ public class Table {
 	 */
 	public Table() {
 
-		this.table = new ArrayList<Variable>();
+		this.variableList = new ArrayList<Variable>();
 	
 	}
 	public Table(String variable, String value, int address) {
@@ -57,7 +57,7 @@ public class Table {
 				
 				variable=variable.replace("++;", "");
 				//value = Integer.parseInt(tokens[0])++;
-				for (Variable a: table) {
+				for (Variable a: variableList) {
 					if(variable.equals(a.getVariable())) {
 						if(a.getValueType() == 1) {
 							currentValue = Integer.parseInt(a.getValue()) + 1;
@@ -82,7 +82,7 @@ public class Table {
 				
 				variable=variable.replace("--;", "");
 				//value = Integer.parseInt(tokens[0])++;
-				for (Variable a: table) {
+				for (Variable a: variableList) {
 					if(variable.equals(a.getVariable())) {
 						if(a.getValueType() == 1) {
 							currentValue = Integer.parseInt(a.getValue()) - 1;
@@ -106,14 +106,14 @@ public class Table {
 		// This will only work if there is a an equal and assigning new values
 		if(tokens.length > 1) {
 			if ("=".equals(tokens[1])) {
-				for (Variable x: table) {
+				for (Variable x: variableList) {
 					if (tokens[0].equals(x.getVariable())) {
 						
 						if(x.getValueType() == 1 || x.getValueType() == 3 || x.getValueType() == 4) {
 							valueType = x.getValueType();
 							for(int i = 2; i < tokens.length; i++) {
 								//System.out.println(tokens[i].replace(";", "") + "-----" +x.getVariable());
-								for(Variable y: table) {
+								for(Variable y: variableList) {
 									if(tokens[i].replace(";", "").equals(y.getVariable())) {
 										tokens[i] = y.getValue();
 									}	
@@ -128,7 +128,7 @@ public class Table {
 							//System.out.println(x.getValue());
 						}
 						if (x.getValueType() == 2) {
-							for(Variable y: table) {
+							for(Variable y: variableList) {
 								if(tokens[2].replace(";", "").equals(y.getVariable())) {
 									if (y.getValueType() == 2) {
 										tokens[2] = y.getValue();
@@ -313,7 +313,7 @@ public class Table {
 			//new1.valueType(pointer);
 			//if this is a sPointer and assigning
 			curAdd+=addSize;
-			table.add(new1);
+			variableList.add(new1);
 			
 			if(pointer > 0 && flagPassEq == 1) {
 				System.out.println("DOOR");
@@ -330,14 +330,14 @@ public class Table {
 	public void pointerAssign(String name, String value, int amper, int pointer) {
 		System.out.println(value);
 		System.out.println("ENTERED");
-		for(Variable a: table) {
+		for(Variable a: variableList) {
 			//TODO: put *p in the arrayList
 			System.out.println("CHECK");
 			System.out.println(a.getVariable());
 			
 			if(name.equals(a.getVariable())) {
 				System.out.println("FIRST IF");
-				for(Variable b: table) {
+				for(Variable b: variableList) {
 					System.out.println("Other");
 					System.out.println(b.getAddress());
 					if(value.equals(String.valueOf(b.getVariable()))) {
@@ -367,7 +367,7 @@ public class Table {
 			varName = name + "[" +String.valueOf(i) + "]";
 			Variable new1 = new Variable(varName, curAdd, tokens[i], pointer, type);
 			curAdd +=addSize;
-			table.add(new1);
+			variableList.add(new1);
 			
 			
 			//System.out.println(jammy.toString());
@@ -417,11 +417,11 @@ public class Table {
 	public void setAddress(int address) {
 		this.address = address;
 	}
-	public ArrayList<Variable> getTable() {
-		return table;
+	public ArrayList<Variable> getVariableList() {
+		return variableList;
 	}
-	public void setTable(ArrayList<Variable> table) {
-		this.table = table;
+	public void setVariableList(ArrayList<Variable> table) {
+		this.variableList = table;
 	}
 	public int getCurrAddress() {
 		return currAddress;
