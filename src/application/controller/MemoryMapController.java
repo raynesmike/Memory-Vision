@@ -113,7 +113,7 @@ public class MemoryMapController implements Initializable{
 		emptyTable = FXCollections.observableArrayList();
 		emptyTable.add(empty);
 		
-		String codeString = codeTextArea.getText();
+		String codeString = codeArea.getText();
 		line = codeString.split("\\n");
 		table.setItems(emptyTable);
 		
@@ -165,6 +165,7 @@ public class MemoryMapController implements Initializable{
 	        table1.addAll(code.getTable().getTable());
 	        
 	    	index++;
+	    	
 			codeArea.moveTo(index, 0);
 			lineNumber++;
 		
@@ -176,13 +177,12 @@ public class MemoryMapController implements Initializable{
 	}
 	
 	public void clear() {
-//		index = 0;
-//		lineNumber = 0;
-//		codeArea.setDisable(false);
-//		
-//		codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
-		code  = new Code();
 		index = 0;
+
+		codeArea.setDisable(false);
+		
+		codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
+		code  = new Code();
 
     	table1.removeAll(code.getTable().getTable());
 
@@ -251,33 +251,33 @@ public class MemoryMapController implements Initializable{
     	addressCol.setCellValueFactory(new PropertyValueFactory<>("address"));
     	valueCol.setCellValueFactory(new PropertyValueFactory<>("value"));
     	
-    	
-    	VNode node1 = new VNode();
-    	VNode node2 = new VNode();
-    	
-    	
-    	pane.getChildren().addAll(node1, node2);
-    	
-    	node1.setLayoutX(400);
-    	node1.setLayoutY(40);
-    	
-    	
-    	
-    	node2.setLayoutX(400);
-    	node2.setLayoutY(160);
-        
-        
-        CubicCurve curve = createPointerLink(node1, node2);
-        Path arrow = createArrowHead(curve);
-        
-      
-        
-        pane.getChildren().addAll(curve, arrow);
-         
-        node1.setVariable("ptr");
-        node1.setAddress("1064");
-        node1.setValue("&1024");
-        node1.setType("int *");
+//    	
+//    	VNode node1 = new VNode();
+//    	VNode node2 = new VNode();
+//    	
+//    	
+//    	pane.getChildren().addAll(node1, node2);
+//    	
+//    	node1.setLayoutX(400);
+//    	node1.setLayoutY(40);
+//    	
+//    	
+//    	
+//    	node2.setLayoutX(400);
+//    	node2.setLayoutY(160);
+//        
+//        
+//        CubicCurve curve = createPointerLink(node1, node2);
+//        Path arrow = createArrowHead(curve);
+//        
+//      
+//        
+//        pane.getChildren().addAll(curve, arrow);
+//         
+//        node1.setVariable("ptr");
+//        node1.setAddress("1064");
+//        node1.setValue("&1024");
+//        node1.setType("int *");
        
 		
 
