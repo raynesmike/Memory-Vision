@@ -13,7 +13,7 @@
    <children>
       <Pane fx:id="pane" layoutX="-15.0" layoutY="-15.0" prefHeight="800.0" prefWidth="800.0" style="-fx-background-color: #ffffff;">
          <children>
-            <TableView fx:id="table" layoutX="386.0" layoutY="77.0" prefHeight="532.0" prefWidth="403.0" visible="false">
+            <TableView fx:id="table" layoutX="386.0" layoutY="77.0" prefHeight="532.0" prefWidth="403.0" visible="true">
               <columns>
                 <TableColumn fx:id="variableCol" prefWidth="124.0" text="Variable" />
                 <TableColumn fx:id="addressCol" prefWidth="137.0" text="Address" />

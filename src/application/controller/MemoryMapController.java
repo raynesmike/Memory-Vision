@@ -107,30 +107,30 @@ public class MemoryMapController implements Initializable{
     
 	public void generate() {
 
-//		table1 = FXCollections.observableArrayList();
-//
-//		Variable empty = new Variable("Starting",0 , "Empty", 0, 0);
-//		emptyTable = FXCollections.observableArrayList();
-//		emptyTable.add(empty);
-//		
-//		String codeString = codeTextArea.getText();
-//		line = codeString.split("\\n");
-//		table.setItems(emptyTable);
-		
-		
-		ObservableList<Variable> table1 = FXCollections.observableArrayList();
-		code  = new Code();
-		String codeString = codeTextArea.getText();
-		code.readCode(codeString);		
-	    
-    	//table.setItems(getVariable());
-    	for(Variable y: code.getTable().getTable()) {
-    		//System.out.println(y.toString());
+		table1 = FXCollections.observableArrayList();
 
-        	table1.add(y);
-        }
-    	
-    	table.setItems(table1);
+		Variable empty = new Variable("Starting",0 , "Empty", 0, 0);
+		emptyTable = FXCollections.observableArrayList();
+		emptyTable.add(empty);
+		
+		String codeString = codeTextArea.getText();
+		line = codeString.split("\\n");
+		table.setItems(emptyTable);
+		
+		
+//		ObservableList<Variable> table1 = FXCollections.observableArrayList();
+//		code  = new Code();
+//		String codeString = codeTextArea.getText();
+//		code.readCode(codeString);		
+//	    
+//    	//table.setItems(getVariable());
+//    	for(Variable y: code.getTable().getTable()) {
+//    		//System.out.println(y.toString());
+//
+//        	table1.add(y);
+//        }
+//    	
+//    	table.setItems(table1);
     	
 	}
     
@@ -153,18 +153,40 @@ public class MemoryMapController implements Initializable{
         codeArea.setParagraphGraphicFactory(graphicFactory);
         
         // step through lines of code until end;
-		if (lineNumber < codeArea.getParagraphs().size()) {
+		if (index < codeArea.getParagraphs().size()) {
 
-			codeArea.moveTo(lineNumber, 0);
+
+	    	table.setItems(emptyTable);
+			code.readCode(line[index]);		
+	    	
+	    	//System.out.println(y.toString());
+	    	table1.removeAll(code.getTable().getTable());
+	  
+	        table1.addAll(code.getTable().getTable());
+	        
+	    	index++;
+			codeArea.moveTo(index, 0);
 			lineNumber++;
+		
+	    	table.setItems(table1);
+	    	lineLabel.setText("Line Number: " + String.valueOf(index));
+		}else {
+			lineLabel.setText("DONE READING");
 		}
 	}
 	
 	public void clear() {
-		lineNumber = 0;
-		codeArea.setDisable(false);
-		
-		codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
+//		index = 0;
+//		lineNumber = 0;
+//		codeArea.setDisable(false);
+//		
+//		codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
+		code  = new Code();
+		index = 0;
+
+    	table1.removeAll(code.getTable().getTable());
+
+    	lineLabel.setText("Line Number: " + String.valueOf(index));
 	}
 	
 	@Override
