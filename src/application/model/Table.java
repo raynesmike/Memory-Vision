@@ -393,8 +393,8 @@ public class Table {
 		for(Variable a: variableList) {
 			tableString += a.toString() + "\n";
 		}
-		System.out.println(tableString);
-		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@2");
+		//System.out.println(tableString);
+		//System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@2");
 		return tableString;
 	}
 }
