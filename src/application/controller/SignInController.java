@@ -1,3 +1,12 @@
+/** 
+ * Application Programming Project 
+ * @author * 
+ * -Tyler Mitchell
+ * -Jamal Dabas
+ * -Michael Raynes
+ * UTSA CS 3443 Application Programming
+ * Fall 2018 
+ **/
 package application.controller;
 
 import java.io.IOException;
@@ -10,8 +19,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SignInController {
-	
-	
+
 	public void SignIn(ActionEvent event) {
 		try {
 			Parent memoryMapParent = FXMLLoader.load(getClass().getResource("../view/MemoryMap.fxml"));

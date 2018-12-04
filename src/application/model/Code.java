@@ -1,3 +1,12 @@
+/** 
+ * Application Programming Project 
+ * @author * 
+ * -Tyler Mitchell
+ * -Jamal Dabas
+ * -Michael Raynes
+ * UTSA CS 3443 Application Programming
+ * Fall 2018 
+ **/
 package application.model;
 
 import java.util.ArrayList;
@@ -24,6 +33,7 @@ public class Code {
 		this.codes = codeString;
 		
 		ArrayList<String> wholeCode = new ArrayList<String>();
+		@SuppressWarnings("resource")
 		Scanner scan = new Scanner(codeString);
 		
 		while( scan.hasNextLine() ) {
@@ -127,8 +137,4 @@ public class Code {
 	public void setTable(Table table) {
 		this.table = table;
 	}
-
-
-
-
 }

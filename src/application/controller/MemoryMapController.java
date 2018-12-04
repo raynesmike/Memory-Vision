@@ -1,37 +1,35 @@
+/** 
+ * Application Programming Project 
+ * @author * 
+ * -Tyler Mitchell
+ * -Jamal Dabas
+ * -Michael Raynes
+ * UTSA CS 3443 Application Programming
+ * Fall 2018 
+ **/
 package application.controller;
-import java.awt.geom.Rectangle2D;
 import java.net.URL;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.function.IntFunction;
-
 import org.fxmisc.richtext.CodeArea;
 import org.fxmisc.richtext.LineNumberFactory;
 import org.reactfx.Subscription;
-
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXToggleNode;
-
 import application.model.Code;
 import application.model.Variable;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
-import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Bounds;
-import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.geometry.Pos;
-import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -40,9 +38,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Effect;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -56,19 +51,12 @@ import javafx.scene.shape.MoveTo;
 import javafx.scene.shape.Path;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
-import javafx.scene.shape.StrokeType;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import com.jfoenix.controls.events.JFXDialogEvent;
 
-
-
-
-public class MemoryMapController implements Initializable{
-	
+public class MemoryMapController implements Initializable{	
 	
     @FXML
     private TableView<Variable> table;
@@ -122,8 +110,6 @@ public class MemoryMapController implements Initializable{
 	private final int NODE_LAYOUT_X = 400;
 	
 	String defaultCode;
-    
-    
     
 	public void generate() {
 		clear();
@@ -186,7 +172,6 @@ public class MemoryMapController implements Initializable{
 			}
 		});*/
 		
-		
 		anchor_root.getChildren().add(dialogStackPane);
 		
 		content.setActions(btnDone);
@@ -241,9 +226,6 @@ public class MemoryMapController implements Initializable{
 	    	variableList.removeAll(code.getTable().getVariableList());
 	  
 	        variableList.addAll(code.getTable().getVariableList());
-	        
-	    	
-	    	
 			codeArea.moveTo(index, 0);
 			lineNumber++;
 		
@@ -332,30 +314,24 @@ public class MemoryMapController implements Initializable{
 		codeArea.setLayoutX(0);
 		codeArea.setLayoutY(0);
 		codeArea.setPrefSize(325, 425);
-		
-		 
-
-		
-		
 		// adds line numbers to left of area
 		codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
 		codeArea.setStyle("-fx-font-size:16px");
 		codeArea.setEffect(new DropShadow(3, 0, 1, Color.BLACK));
 		
-		
 		// recomputes syntax highlighting 500ms after user enters text
 		Subscription cleanupWhenNoLongerNeedIt = codeArea
 
-                // plain changes = ignore style changes that are emitted when syntax highlighting is reapplied
-                // multi plain changes = save computation by not rerunning the code multiple times
-                //   when making multiple changes (e.g. renaming a method at multiple parts in file)
-                .multiPlainChanges()
+        // plain changes = ignore style changes that are emitted when syntax highlighting is reapplied
+        // multi plain changes = save computation by not rerunning the code multiple times
+        //   when making multiple changes (e.g. renaming a method at multiple parts in file)
+        .multiPlainChanges()
 
-                // do not emit an event until 500 ms have passed since the last emission of previous stream
-                .successionEnds(Duration.ofMillis(500))
+        // do not emit an event until 500 ms have passed since the last emission of previous stream
+        .successionEnds(Duration.ofMillis(500))
 
-                // run the following code block when previous stream emits an event
-                .subscribe(ignore -> codeArea.setStyleSpans(0, c.computeHighlighting(codeArea.getText())));
+        // run the following code block when previous stream emits an event
+        .subscribe(ignore -> codeArea.setStyleSpans(0, c.computeHighlighting(codeArea.getText())));
 
         // when no longer need syntax highlighting and wish to clean up memory leaks
         // run: `cleanupWhenNoLongerNeedIt.unsubscribe();`
@@ -385,10 +361,6 @@ public class MemoryMapController implements Initializable{
     	
     	VNode varLast = new VNode();
     	VNode varPtr = new VNode();
-    	
-    	
-    	
-    	
     	
     	//pane.getChildren().addAll(varV0, varV1, varV2, varX, varY, varA0, varA1, varA2, varName, varLast, varPtr);
     	
@@ -441,19 +413,10 @@ public class MemoryMapController implements Initializable{
         varName.setAddress("1020");
         varLast.setAddress("1021");
         varPtr.setAddress("1022");
-        
-        
-    	
-    	
-    	
-    	
-    	
-    	
+
         CubicCurve curve = createPointerLink(varV0, varV1);
         Path arrow = createArrowHead(curve);
-        
-      
-        
+          
         pane.getChildren().addAll();
          
         varV0.setVariable("ptr");
@@ -461,11 +424,7 @@ public class MemoryMapController implements Initializable{
         varV0.setValue("&1024");
         varV0.setType("int *");
        
-		
-
     	codeArea.getStylesheets().add(MemoryMapController.class.getResource("../view/c.css").toExternalForm());
-    	
-    	
     	 
     	//TODO for arrow indicator when generate/next is run 
     	
@@ -475,15 +434,8 @@ public class MemoryMapController implements Initializable{
     	} else {
     		//codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
     	}
-    	
-    	
-       
-		
-		editor.getChildren().add(codeArea);
-		
+		editor.getChildren().add(codeArea);		
 	}
-	
-	
 	
 	private CubicCurve createPointerLink(VNode source, VNode target) {
 		CubicCurve curve = new CubicCurve();
@@ -528,7 +480,6 @@ public class MemoryMapController implements Initializable{
 	    arrowEnd.getElements().add(new LineTo(ori.getX()-0.2*tan.getX()+0.2*tan.getY(),
 	                                        ori.getY()-0.2*tan.getY()-0.2*tan.getX()));
 	    
-	    
 	    arrowEnd.setStrokeLineCap(StrokeLineCap.ROUND);
 	    arrowEnd.setStrokeWidth(3);
 	    arrowEnd.setStrokeLineJoin(StrokeLineJoin.ROUND);
@@ -572,8 +523,4 @@ public class MemoryMapController implements Initializable{
 	            3*Math.pow(t, 2)*c.getEndY());
 	    return p;
 	}
-	
-	
-	
-
 }

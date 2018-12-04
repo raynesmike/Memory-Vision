@@ -24,7 +24,7 @@
             <Insets left="15.0" right="15.0" top="20.0" />
          </VBox.margin>
          <children>
-            <TextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Email" styleClass="tf" HBox.hgrow="ALWAYS">
+            <TextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="First Name" styleClass="tf" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="15.0" />
                </font>
@@ -34,12 +34,12 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="263.0" prefHeight="45.0" prefWidth="200.0" styleClass="tf_box">
          <children>
-            <TextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Password" styleClass="tf" HBox.hgrow="ALWAYS">
+            <TextField maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Last Name" styleClass="tf" HBox.hgrow="ALWAYS">
                <font>
                   <Font size="15.0" />
                </font>
             </TextField>
-            <FontAwesomeIcon glyphStyle="-fx-fill:DEDEE4" iconName="LOCK" size="1.5em" />
+            <FontAwesomeIcon glyphStyle="-fx-fill:DEDEE4" iconName="USER" size="1.5em" />
          </children>
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="20.0" />

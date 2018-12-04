@@ -1,3 +1,12 @@
+/** 
+ * Application Programming Project 
+ * @author * 
+ * -Tyler Mitchell
+ * -Jamal Dabas
+ * -Michael Raynes
+ * UTSA CS 3443 Application Programming
+ * Fall 2018 
+ **/
 package application.model;
 
 import java.util.ArrayList;
@@ -10,14 +19,6 @@ public class Table {
 	private int address;
 	private int currAddress;
 	private int startAddress;
-	//private Variable newVar;
-	// TODO look for the variable name
-	
-	// TODO assign address
-	// { , , , } read, tokenize and assign the addresses to the count of variable
-	// will do a contiguous distribution for easier implementation
-	
-	// TODO assign value
 
 	/**
 	 * Constructor
@@ -150,14 +151,7 @@ public class Table {
 									value = value.replace(";", "");
 									System.out.println("THE IS A QUOTE AROUND IT NOW ASSIGN IT");
 									x.setValue(value);
-								}
-								//else {
-									//x.setValue(y.getValue());
-								//}
-//								value = tokens[2].replace("'", "");
-//								value = value.replaceAll(";", "");
-//								x.setValue(value);
-//								
+								}							
 							}
 						}
 					}		
@@ -247,9 +241,6 @@ public class Table {
 			if(valueType == 4) {
 				value = String.valueOf((Float.parseFloat(one) + Float.parseFloat(two)));
 			}
-			
-			//System.out.println(value +"@@@@@@@@@@@@DDDDDDDDDDDDDDDDDIIIIIIIIIIIIIIINNNNNNNNNNNNNNGGGGGGGGGGGGGGGG");
-			//return value;
 			break;
 		case "-":
 			if(valueType == 1) {
@@ -262,21 +253,12 @@ public class Table {
 			if(valueType == 4) {
 				value = String.valueOf((Float.parseFloat(one) - Float.parseFloat(two)));
 			}
-			//return sec;
-			//System.out.println(value +"@@@@@@@@@@@@DDDDDDDDDDDDDDDDDIIIIIIIIIIIIIIINNNNNNNNNNNNNNGGGGGGGGGGGGGGGG");
-			//return sec;
 			break;
 			default:
-				//System.out.println("I FUCKING HATE THIS");
 				break;
 		}
-		//if(oper.equals("-")) {
-		//	return String.valueOf(Integer.parseInt(value) * -1);
-		//} else {
 			return value;
-		//}
 	}
-	
 	
 	public int classifyLine(String s, int curAdd , int addSize, int type) {
 		//newVar = new Variable();
@@ -290,7 +272,6 @@ public class Table {
 		String varName = "";
 		String value = "";
 		for(int i= lenOfPType+1; i < s.length(); i++) {
-			//System.out.print(s.charAt(i));
 			/**
 			 * stop when end or after the variable name;
 			 */
@@ -353,14 +334,6 @@ public class Table {
 			}
 		}
 	}
-		/*for(Variable x: table) {
-			if(value.equals(x.getVariable())) {
-				if(x.getPointerType() == pointer) {
-					x.setValue(String.valueOf(x.getAddress()));
-				}
-			}
-		}*/
-	
 	
 	public int assignArray(String name, String val, int curAdd,int addSize, int pointer, int type) {
 		
@@ -380,25 +353,6 @@ public class Table {
 		return curAdd;
 	}
 
-		/**
-		 * TODO 
-		 * Create a Table that will contain variable name, address and its value
-		 */
-		/**
-		 *  TODO check if its a pointer or not
-		 *	POINTER int *ptr;
- 		 *		-- ptr = address of the VARIABLE
-		 *		--*ptr = Dereference
-		 *	2xPOINTER int **ptr;
-		 *		-- dptr = address of the POINTER
-		 *		--*dptr = address of the VARIABLE
-		 *		--**dptr= VALUE of the VARIABLE
-		 */
-		//return var;
-		// TODO assign into an address /if *ptr  
-		
-
-	
 	/**
 	 * Setters and Getters
 	 * @return

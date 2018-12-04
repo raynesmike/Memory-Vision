@@ -1,3 +1,12 @@
+/** 
+ * Application Programming Project 
+ * @author * 
+ * -Tyler Mitchell
+ * -Jamal Dabas
+ * -Michael Raynes
+ * UTSA CS 3443 Application Programming
+ * Fall 2018 
+ **/
 package application.controller;
 
 import java.io.IOException;
@@ -33,15 +42,7 @@ public class MainController implements Initializable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		// t.play();
-		/*
-		 * t.setOnFinished((e) -> { try { fxml =
-		 * FXMLLoader.load(getClass().getResource("../view/SignIn.fxml"));
-		 * vbox.getChildren().removeAll(); vbox.getChildren().setAll(fxml); } catch
-		 * (IOException ex) {
-		 * Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
-		 * } });
-		 */
+
 	}
  
 	@FXML

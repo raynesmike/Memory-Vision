@@ -1,3 +1,12 @@
+/** 
+ * Application Programming Project 
+ * @author * 
+ * -Tyler Mitchell
+ * -Jamal Dabas
+ * -Michael Raynes
+ * UTSA CS 3443 Application Programming
+ * Fall 2018 
+ **/
 package application.controller;
 
 import java.net.URL;
@@ -9,10 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
- 
-
-
-public class ImageSlideController implements Initializable {
+ public class ImageSlideController implements Initializable {
 	
 	@FXML
 	private VBox image_container;
@@ -70,10 +76,6 @@ public class ImageSlideController implements Initializable {
 			break;
 		}
 		
-	
-		
-		
-		
 		try {
 			String imagePath = getClass().getResource("../view/" + images[image_index]).toURI().toString();
 			Image image = new Image(imagePath);
@@ -84,10 +86,8 @@ public class ImageSlideController implements Initializable {
 		}
 	}
 	
-	
 	@FXML
 	void prevImage() {
-		
 		
 		if(image_index == 0) {
 			image_index = images.length;
@@ -114,10 +114,6 @@ public class ImageSlideController implements Initializable {
 			break;
 		}
 		
-	
-		
-		
-		
 		try {
 			String imagePath = getClass().getResource("../view/" + images[image_index]).toURI().toString();
 			Image image = new Image(imagePath);
@@ -128,16 +124,6 @@ public class ImageSlideController implements Initializable {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-
 	void setCircleIcon(FontAwesomeIcon indicator) {
 		indicator.setIconName("CIRCLE");
 	}

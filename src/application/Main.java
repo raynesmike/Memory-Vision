@@ -1,3 +1,12 @@
+/** 
+ * Application Programming Project 
+ * @author * 
+ * -Tyler Mitchell
+ * -Jamal Dabas
+ * -Michael Raynes
+ * UTSA CS 3443 Application Programming
+ * Fall 2018 
+ **/
 package application;
 
 import javafx.application.Application;
@@ -20,7 +29,6 @@ public class Main extends Application {
         
         stage.show();
     }
- 
     
     public static void main(String[] args) {
         launch(args);
