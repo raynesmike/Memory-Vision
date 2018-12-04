@@ -18,7 +18,7 @@ public class Code {
 	private int curAddress;
 	private Table table;
 	//public static ArrayList<codes>functions;
-	
+
 	/**
 	 * Constructor
 	 */

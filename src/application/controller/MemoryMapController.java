@@ -57,7 +57,7 @@ import javafx.stage.Stage;
 import com.jfoenix.controls.events.JFXDialogEvent;
 
 public class MemoryMapController implements Initializable{	
-	
+	 
     @FXML
     private TableView<Variable> table;
     @FXML

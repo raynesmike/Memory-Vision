@@ -24,12 +24,11 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("view/Main.fxml"));        
         Scene scene = new Scene(root);
         scene.setFill(Color.TRANSPARENT);
-       stage.initStyle(StageStyle.TRANSPARENT);
-        stage.setScene(scene);
-        
+        stage.initStyle(StageStyle.TRANSPARENT);
+        stage.setScene(scene);     
         stage.show();
     }
-    
+   
     public static void main(String[] args) {
         launch(args);
     }

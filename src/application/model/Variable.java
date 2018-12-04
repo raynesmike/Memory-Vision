@@ -24,7 +24,7 @@ public class Variable extends Table{
 	 * @param name
 	 * @param address
 	 * @param val
-	 */
+	 */ 
 
 	public Variable(String name, int address, String val, int pointer, int type) {
 		

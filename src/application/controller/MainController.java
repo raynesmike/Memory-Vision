@@ -27,7 +27,6 @@ public class MainController implements Initializable {
 
 	@FXML
 	private VBox vbox;
-
 	private Parent fxml;
 
 	@Override
@@ -42,7 +41,6 @@ public class MainController implements Initializable {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-
 	}
  
 	@FXML

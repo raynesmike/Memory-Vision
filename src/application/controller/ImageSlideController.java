@@ -22,10 +22,8 @@ import javafx.scene.image.ImageView;
 	
 	@FXML
 	private VBox image_container;
-	
 	@FXML
 	private ImageView slider_image;
-	
 	@FXML
 	private FontAwesomeIcon indicator1, indicator2, indicator3, forward, backward;
 	
@@ -45,8 +43,7 @@ import javafx.scene.image.ImageView;
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
 	}
 	
 	@FXML

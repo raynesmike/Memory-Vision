@@ -394,5 +394,4 @@ public class Table {
 	public void setStartAddress(int startAddress) {
 		this.startAddress = startAddress;
 	}
-
 }
