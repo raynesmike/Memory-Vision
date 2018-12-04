@@ -45,12 +45,6 @@ public class Table {
 		int flagCome = 0;
 		int flagStopAdding;
 		
-		//int =1;
-		//char=2;
-		//float=3;
-		//double=4;
-		
-		
 		if (tokens.length == 1) {
 			variable = tokens[0];
 
