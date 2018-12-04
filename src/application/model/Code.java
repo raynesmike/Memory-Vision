@@ -9,6 +9,9 @@
  **/
 package application.model;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -105,7 +108,22 @@ public class Code {
 
 		}
 	}
-
+	public Boolean save(String fileName, String userString) throws FileNotFoundException {
+		
+		FileOutputStream file = new FileOutputStream(fileName, false);
+		PrintWriter outFile = new PrintWriter( file );
+//		Scanner scan = new Scanner(userList);
+//		
+//		while (scan.hasNextLine()) {
+//			String line = scan.nextLine();
+			outFile.println("-----CODE PRINT------"+userString);
+			outFile.print("\n\n ------TABLE PRINT------\n" + table.toString());
+//		}
+		outFile.close();
+		//scan.close();
+		return true;
+	}
+	
 	public String getCodes() {
 		return codes;
 	}

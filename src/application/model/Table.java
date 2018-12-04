@@ -388,4 +388,13 @@ public class Table {
 	public void setStartAddress(int startAddress) {
 		this.startAddress = startAddress;
 	}
+	public String toString() {
+		String tableString = "";
+		for(Variable a: variableList) {
+			tableString += a.toString() + "\n";
+		}
+		System.out.println(tableString);
+		System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@2");
+		return tableString;
+	}
 }

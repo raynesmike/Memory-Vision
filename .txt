@@ -1,0 +1,16 @@
+-----CODE PRINT------int v[] = {20, 30, 40};
+int x = 20;
+int y = 30;
+char a[] = {'a', 'b', 'c'};
+x = 20 + 30;
+y = x + 50;
+v[1] = 20 + 30;
+v[2] = v[1] + 50;
+char name = 'r';
+char last = 'z';
+name = last;
+v[0]++;
+int *p = &x;
+
+
+ ------TABLE PRINT------

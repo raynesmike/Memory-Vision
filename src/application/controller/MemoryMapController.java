@@ -8,6 +8,7 @@
  * Fall 2018 
  **/
 package application.controller;
+import java.io.FileNotFoundException;
 import java.net.URL;
 import java.time.Duration;
 import java.util.ResourceBundle;
@@ -85,6 +86,8 @@ public class MemoryMapController implements Initializable{
     @FXML
     private Stage stage;
     @FXML
+    private Label statusL;
+    @FXML
     JFXToggleNode btnHelp;
     @FXML
     CodeArea codeArea;
@@ -138,6 +141,19 @@ public class MemoryMapController implements Initializable{
 //    	
 //    	table.setItems(table1);
     	
+	}
+	
+	public void handle_save(ActionEvent event) {
+		boolean check =false;
+		try {
+			check = code.save(SignInController.filePath.toString(), codeArea.getText());
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		if(check) {
+			statusL.setText("Success");
+		}
 	}
 	
 	public void loadDialog(ActionEvent event) {
