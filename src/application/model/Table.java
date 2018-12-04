@@ -389,12 +389,10 @@ public class Table {
 		this.startAddress = startAddress;
 	}
 	public String toString() {
-		String tableString = "";
+		String tableString = "variable = value -- address\n";
 		for(Variable a: variableList) {
 			tableString += a.toString() + "\n";
 		}
-		//System.out.println(tableString);
-		//System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@2");
 		return tableString;
 	}
 }

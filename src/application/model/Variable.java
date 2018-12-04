@@ -142,7 +142,6 @@ public class Variable extends Table{
 	}
 	public void setValue(String value) {
 		checkType(value);
-		//this.value = value;
 	}
 	
 	public int getPointerType() {
@@ -158,6 +157,6 @@ public class Variable extends Table{
 		this.valueType = valueType;
 	}
 	public String toString() {
-		return variable +"="+ value + "->"+String.valueOf(address);
+		return variable +"="+ value + "--"+String.valueOf(address);
 	}
 }

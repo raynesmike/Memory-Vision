@@ -117,7 +117,7 @@ public class Code {
 //		while (scan.hasNextLine()) {
 //			String line = scan.nextLine();
 			outFile.println("-----CODE PRINT------"+userString);
-			outFile.print("\n\n ------TABLE PRINT------\n" + table.toString());
+			outFile.print("\n\n------TABLE PRINT------\n" + table.toString());
 //		}
 		outFile.close();
 		//scan.close();
