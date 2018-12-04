@@ -9,11 +9,16 @@
  **/
 package application.model;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javafx.scene.control.TextArea;
 
 public class Code {
 	private String codes;
@@ -116,12 +121,34 @@ public class Code {
 //		
 //		while (scan.hasNextLine()) {
 //			String line = scan.nextLine();
-			outFile.println("-----CODE PRINT------"+userString);
-			outFile.print("\n\n------TABLE PRINT------\n" + table.toString());
+			outFile.println(userString);
+			//outFile.print("\n\n------TABLE PRINT------\n" + table.toString());
 //		}
 		outFile.close();
 		//scan.close();
 		return true;
+	}
+	
+	
+	public static ArrayList<String> loadCode(String filename) throws IOException {
+		//File file = new File(fileName);
+		File file = new File(filename);
+		Scanner scan = new Scanner(file);
+		
+		ArrayList<String> data = new ArrayList<String>();
+		
+		while(scan.hasNext()) {
+			String line = scan.nextLine();
+			data.add(line);
+			
+		}
+		//System.out.println(data);
+		scan.close();
+		return data;
+	}
+	
+	public void writeBack(String st) {
+		
 	}
 	
 	public String getCodes() {

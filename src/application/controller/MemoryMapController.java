@@ -9,8 +9,10 @@
  **/
 package application.controller;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.function.IntFunction;
 import org.fxmisc.richtext.CodeArea;
@@ -146,13 +148,31 @@ public class MemoryMapController implements Initializable{
 	public void handle_save(ActionEvent event) {
 		boolean check =false;
 		try {
-			check = code.save(SignInController.filePath.toString(), codeArea.getText());
+			check = code.save("data/data.txt", codeArea.getText());
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(check) {
 			statusL.setText("Success");
+		}
+	}
+	
+	public void handle_load() {
+		ArrayList<String> temp = new ArrayList<String>();
+		String use = "";
+		codeArea.clear();
+		try {
+			System.out.println("HERE");
+			temp = Code.loadCode("data/data.txt");
+			for( String x: temp) {
+				use = x + "\n";
+				codeArea.appendText(use);
+				
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 	
@@ -165,10 +185,15 @@ public class MemoryMapController implements Initializable{
 		JFXDialogLayout content = new JFXDialogLayout();
 		content.setHeading(new Text("User Rules"));
 		content.setBody(new Text(
-				" - NO COMMENTS!\n" + 
-				"- \"x++\" and \"x--\" must be one string (NO SPACES)\n" + 
+				"- Only initialization and modification statements" + 
+				"- Pointers can only be initialized, no Modifying" +
+				"- No functions, printf statements, File IO, etc\n" + 
+				"- NO COMMENTS!\n" + 
+				"- Single Space between words\n" +
+				"- \"x++\" and \"x--\" must be one string (NO SPACES between them)\n" + 
 				"- NO +=, -=, *=, /=\n" + 
-				"- Please enter correct C code, while we do check for some errors, we aren't garbage collectors\n"));
+				"- Please enter correct C code, while we do check for some errors, we aren't garbage collectors\n" +
+				"- Only Addition and Subtraction!\n" ));
 		 
 		
 		StackPane dialogStackPane = new StackPane();
@@ -255,8 +280,9 @@ public class MemoryMapController implements Initializable{
 	}
 	
 	public void clear() {
+		//codeArea.clear();
 		index = 0;
-
+		
 		codeArea.setDisable(false);
 		
 		codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));

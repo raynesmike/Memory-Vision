@@ -1,4 +1,4 @@
------CODE PRINT------int v[] = {20, 30, 40};
+int v[] = {20, 30, 40};
 int x = 20;
 int y = 30;
 char a[] = {'a', 'b', 'c'};
