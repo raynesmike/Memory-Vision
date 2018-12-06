@@ -12,13 +12,11 @@ package application.model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import javafx.scene.control.TextArea;
 
 public class Code {
 	private String codes;

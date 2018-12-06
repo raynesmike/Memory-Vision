@@ -1,56 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="VBox" alignment="CENTER_LEFT" prefHeight="480.0" prefWidth="480.0" styleClass="white-pane" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.SignInController">
+<VBox id="VBox" alignment="CENTER" prefHeight="480.0" prefWidth="480.0" styleClass="white-pane" stylesheets="@stylesheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.SignInController">
    <children>
-      <Label text="Sign In" textFill="#f78c7b">
-         <font>
-            <Font size="20.0" />
-         </font>
-         <VBox.margin>
-            <Insets left="20.0" right="15.0" top="20.0" />
-         </VBox.margin>
-      </Label>
-      <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="200.0" styleClass="tf_box">
-         <VBox.margin>
-            <Insets left="15.0" right="15.0" top="20.0" />
-         </VBox.margin>
+      <HBox alignment="CENTER_LEFT" maxWidth="400.0" prefHeight="45.0" prefWidth="249.0" spacing="13.0">
          <children>
-            <TextField fx:id="firstN" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="First Name" styleClass="tf" HBox.hgrow="ALWAYS">
+            <Label text="Choose a Project" textFill="#f78c7b">
                <font>
-                  <Font size="15.0" />
+                  <Font size="20.0" />
                </font>
-            </TextField>
-            <FontAwesomeIcon glyphStyle="-fx-fill:DEDEE4" iconName="USER" size="1.5em" />
+            </Label>
+            <Separator prefHeight="3.0" prefWidth="145.0" visible="false" />
+            <JFXButton alignment="CENTER" onAction="#chooseFile" prefHeight="31.0" prefWidth="78.0" ripplerFill="WHITE" styleClass="pink-btn" text="choose file" />
          </children>
       </HBox>
-      <HBox alignment="CENTER_LEFT" layoutX="25.0" layoutY="263.0" prefHeight="45.0" prefWidth="200.0" styleClass="tf_box">
+      <TableView fx:id="fileTable" maxHeight="400.0" maxWidth="400.0" prefHeight="300.0" prefWidth="200.0">
+        <columns>
+          <TableColumn fx:id="colName" prefWidth="75.0" text="Project Name" />
+        </columns>
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy>
+      </TableView>
+      <HBox alignment="CENTER_RIGHT" maxWidth="400.0" prefHeight="45.0" prefWidth="249.0" spacing="13.0">
          <children>
-            <TextField fx:id="lastN" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" promptText="Last Name" styleClass="tf" HBox.hgrow="ALWAYS">
+            <JFXButton fx:id="btnNewProject" alignment="CENTER" onAction="#NewProject" prefHeight="31.0" prefWidth="121.0" ripplerFill="WHITE" styleClass="pink-btn" text="New Project" />
+            <JFXTextField fx:id="txtName" focusColor="BLACK" labelFloat="true" maxWidth="200.0" minWidth="200.0" prefHeight="31.0" prefWidth="200.0" promptText="enter project name" />
+            <JFXButton fx:id="btnOK" alignment="CENTER" onAction="#Confirm" prefHeight="23.0" prefWidth="70.0" ripplerFill="WHITE" styleClass="pink-btn" text="OK">
                <font>
-                  <Font size="15.0" />
+                  <Font size="10.0" />
                </font>
-            </TextField>
-            <FontAwesomeIcon glyphStyle="-fx-fill:DEDEE4" iconName="USER" size="1.5em" />
+            </JFXButton>
+            <JFXButton fx:id="btnCancel" alignment="CENTER" onAction="#Cancel" prefHeight="23.0" prefWidth="88.0" ripplerFill="WHITE" styleClass="pink-btn" text="Cancel">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </JFXButton>
          </children>
-         <VBox.margin>
-            <Insets left="15.0" right="15.0" top="20.0" />
-         </VBox.margin>
       </HBox>
-      <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="285.0" prefHeight="45.0" prefWidth="200.0">
+      <HBox alignment="CENTER" layoutX="10.0" layoutY="285.0" prefHeight="45.0" prefWidth="200.0">
          <VBox.margin>
             <Insets left="15.0" right="15.0" top="20.0" />
          </VBox.margin>
          <children>
-            <JFXButton onAction="#SignIn" prefHeight="39.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="pink-btn" text="Sign In">
+            <JFXButton fx:id="btnLaunch" onAction="#SignIn" prefHeight="39.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="pink-btn" text="Launch">
                <font>
                   <Font size="15.0" />
                </font>

@@ -1,0 +1,52 @@
+
+.table-view {
+    -fx-base: #50A7F2;
+    -fx-background-color: #f9f9f9;
+    -fx-control-inner-background: #f9f9f9;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 0 0 0 0;
+    -fx-background-radius: 5;
+    -fx-font-size: 18;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #F78C7B;
+    -fx-background-radius: 10 10 0 0;
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 20;
+    -fx-border-width: 0 0 0 0;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent derive(-fx-base, 80%) transparent;
+    -fx-border-insets: 0 10 1 0;
+    
+}
+
+.table-view.column-header-background {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header .label {
+	
+    -fx-font-size: 20;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-alignment: center-left;
+    -fx-opacity: 1;
+    -fx-padding: 8;
+}
+
+.table-view:focused .table-row-cell:focused {
+    -fx-border-color: derive(-fx-base, 20%);
+    -fx-background-insets: 0 0 0 0;
+    -fx-table-cell-border-color: transparent;
+    
+}
+
+.table-view:focused .table-row-cell:selected {
+    -fx-background-color: derive(-fx-base, 20%);
+    
+    -fx-background-insets: 0 0 0 0;
+}
