@@ -11,17 +11,21 @@ Memory Vision helps students and educators easily visualize how computer memory 
 
 ##Login
 
--On starting our program. you'll see a table with data and test1 in it. You could select one of these with pre-prepared code and launch it, or create your own file and launch it
+-On starting our program. you'll see a table with example1 and example2 in it. You could select one of these with pre-prepared code and launch it, or create your own file and launch it
 
 ## Bugs
 
-- No X button on Mac and linux
+- No X button on Mac and linux, can't close and can't resize window.
 
 - Some words on some buttons are shortened  Ex.) Varia... instead of Variable
 
 - If you zoom in too much (it flips it), it causes UI problems, No limit to zooming
 
 - The User Rules lists limitations of the program to help the user avoid errors.
+
+- The Choose file button is under construction.
+
+
 
 
 ## Dependencies

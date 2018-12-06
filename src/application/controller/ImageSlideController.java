@@ -35,7 +35,7 @@ public class ImageSlideController implements Initializable {
 	private FontAwesomeIcon indicator1, indicator2, indicator3, forward, backward;
 	
 	int image_index = 0;
-	String images[] = new String[] {"img1.gif", "img2.gif", "img3.gif"};
+	String images[] = new String[] {"img1.png", "img2.png", "img3.png"};
 
 	/**
 	 * initialize method
@@ -45,7 +45,7 @@ public class ImageSlideController implements Initializable {
 		// TODO Auto-generated method stub
 		
 		try {
-			String img1Path = getClass().getResource("../view/img1.gif").toURI().toString();
+			String img1Path = getClass().getResource("../view/img1.png").toURI().toString();
 			Image img1 = new Image(img1Path);
 			slider_image.setImage(img1);
 			setCircleIcon(indicator1);
