@@ -19,12 +19,20 @@ import javafx.stage.StageStyle;
 
 /**
  * 
- * @author Algorado
+ * @author 
+ * * - Tyler Mitchell
+ * - Jamal Dabas
+ * - Michael Raynes
+ * UTSA CS 3443 Application Programming
+ * Fall 2018 
  * Main function starts the program
  *
  */
 public class Main extends Application {
     
+	/**
+	 * start method used for starting the Main fxml
+	 */
     @Override
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("view/Main.fxml"));        
@@ -35,6 +43,10 @@ public class Main extends Application {
         stage.show();
     }
    
+    /**
+     * main function
+     * @param args String []
+     */
     public static void main(String[] args) {
         launch(args);
     }

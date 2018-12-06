@@ -8,7 +8,11 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.Pane;
 
-
+/**
+ * This represents a pannable UI pane
+ * @author Algorado
+ *
+ */
 public class PanPane extends Pane {
 
     private static Point2D mouseInitialPosition;
@@ -23,19 +27,37 @@ public class PanPane extends Pane {
         
     }
 
+    /**
+     * keep track of mouse position
+     * @param event MouseEvent
+     */
     public void onMousePressed(MouseEvent event) {
         mouseInitialPosition = new Point2D(event.getX(), event.getY());
     }
 
+    /**
+     * keep track of mouse position
+     * @param event MouseEvent
+     */
     public void onMouseDragged(MouseEvent event) {
         pan(event.getX() - mouseInitialPosition.getX(), event.getY() - mouseInitialPosition.getY());
         mouseInitialPosition = new Point2D(event.getX(), event.getY());
     }
 
+    /**
+     * allows for scrolling
+     * @param event MouseEvent
+     */
     public void onMouseScroll(ScrollEvent event) {
         zoom(event.getX(), event.getY(), event.getDeltaY() / 1000d);
     }
 
+    /**
+     * allows for zooming the table
+     * @param x double
+     * @param y double
+     * @param scaleFactor double
+     */
     private void zoom(double x, double y, double scaleFactor) {
 
         this.getChildren().forEach(child -> {
@@ -56,6 +78,11 @@ public class PanPane extends Pane {
 
     }
 
+    /**
+     * helps setup layout
+     * @param x double
+     * @param y double
+     */
     private void pan(double x, double y) {
         this.getChildren().forEach(child -> {
             child.setLayoutX(child.getLayoutX() + x);
@@ -63,6 +90,11 @@ public class PanPane extends Pane {
         });
     }
 
+    /**
+     * works with node
+     * @param node Node
+     * @param bounds Bounds
+     */
     public void centrePartOfNode(Node node, Bounds bounds) {
         //Zooming to scale is correct.
         double widthFactor = this.getWidth() / bounds.getWidth();

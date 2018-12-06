@@ -17,6 +17,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Creates Code object
+ * @author Algorado
+ * 
+ */
 
 public class Code {
 	private String codes;
@@ -35,6 +40,11 @@ public class Code {
 		this.table = new Table();
 	}
 	
+	/**
+	 * reads strings, parse them, and store them in an arraylist, line per line
+	 * @param codeString String
+	 * @return wholeCode ArrayList<String>
+	 */
 	public ArrayList<String> readCode( String codeString ) {
 		this.codes = codeString;
 		
@@ -54,6 +64,10 @@ public class Code {
 		return wholeCode;
 	}
 	
+	/**
+	 * Reading the code and defines types
+	 * @param line String
+	 */
 	public void readPerLine( String line ) {
 		String[] word =line.split(" ");
 		int addSize = 0;
@@ -111,23 +125,31 @@ public class Code {
 
 		}
 	}
+	/**
+	 * Save button
+	 * @param fileName String
+	 * @param userString String
+	 * @return true
+	 * @throws FileNotFoundException FileNotFoundException
+	 */
 	public Boolean save(String fileName, String userString) throws FileNotFoundException {
 		
 		FileOutputStream file = new FileOutputStream(fileName, false);
 		PrintWriter outFile = new PrintWriter( file );
-//		Scanner scan = new Scanner(userList);
-//		
-//		while (scan.hasNextLine()) {
-//			String line = scan.nextLine();
-			outFile.println(userString);
-			//outFile.print("\n\n------TABLE PRINT------\n" + table.toString());
-//		}
+
+		outFile.println(userString);
+			
 		outFile.close();
-		//scan.close();
+		
 		return true;
 	}
 	
-	
+	/**
+	 * Will load code
+	 * @param filename String
+	 * @return data ArrayList<String>
+	 * @throws IOException IOException
+	 */
 	public static ArrayList<String> loadCode(String filename) throws IOException {
 		//File file = new File(fileName);
 		File file = new File(filename);
@@ -145,38 +167,66 @@ public class Code {
 		return data;
 	}
 	
-	public void writeBack(String st) {
-		
-	}
-	
+	/**
+	 * getter method
+	 * @return codes String
+	 */
 	public String getCodes() {
 		return codes;
 	}
 
+	/**
+	 * setter method
+	 * @param codes String
+	 */
 	public void setCodes(String codes) {
 		this.codes = codes;
 	}
 
+	/**
+	 * getter method
+	 * @return startAddress
+	 */
 	public int getStartAddress() {
 		return startAddress;
 	}
 
+	/**
+	 * setter method
+	 * @param startAddress String
+	 */
 	public void setStartAddress(int startAddress) {
 		this.startAddress = startAddress;
 	}
 
+	/**
+	 * getter method
+	 * @return curAddress int
+	 */
 	public int getCurAddress() {
 		return curAddress;
 	}
 
+	/**
+	 * setter method
+	 * @param curAddress String
+	 */
 	public void setCurAddress(int curAddress) {
 		this.curAddress = curAddress;
 	}
 
+	/**
+	 * getter method
+	 * @return table Table
+	 */
 	public Table getTable() {
 		return table;
 	}
 
+	/**
+	 * setter method
+	 * @param table Tavle
+	 */
 	public void setTable(Table table) {
 		this.table = table;
 	}

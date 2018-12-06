@@ -23,12 +23,21 @@ import javafx.scene.Parent;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
+/**
+ * 
+ * @author Algorado
+ * 
+ *
+ */
 public class MainController implements Initializable {
 
 	@FXML
 	private VBox vbox;
 	private Parent fxml;
 
+	/**
+	 * initialize method
+	 */
 	@Override
 	public void initialize(URL url, ResourceBundle rb) {
 		// TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
@@ -43,6 +52,10 @@ public class MainController implements Initializable {
 		}
 	}
  
+	/**
+	 * Opens sign up
+	 * @param event ActionEvent
+	 */
 	@FXML
 	private void open_signup(ActionEvent event) {
 		TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
@@ -60,6 +73,10 @@ public class MainController implements Initializable {
 		});
 	}
 
+	/**
+	 * open sign in
+	 * @param event ActionEvent
+	 */
 	@FXML
 	private void open_signin(ActionEvent event) {
 		TranslateTransition t = new TranslateTransition(Duration.seconds(1), vbox);
@@ -76,11 +93,6 @@ public class MainController implements Initializable {
 
 		});
 
-	}
-	
-	@FXML
-	private void newProject(ActionEvent event) {
-		
 	}
 
 }

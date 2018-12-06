@@ -14,10 +14,20 @@ import java.util.function.IntFunction;
 public class CodeArrowFactory implements IntFunction<Node> {
     private final ObservableValue<Integer> shownLine;
 
+    /**
+     * Constructor
+     * @param shownLine shownLine
+     */
     public CodeArrowFactory(ObservableValue<Integer> shownLine) {
         this.shownLine = shownLine;
     }
 
+    /**
+     * This shows the line incrementer polygon
+     * @param lineNumber int
+     * @return triangle Node
+     * 
+     */
     @Override
     public Node apply(int lineNumber) {
         Polygon triangle = new Polygon(0.0, 0.0, 10.0, 5.0, 0.0, 10.0);

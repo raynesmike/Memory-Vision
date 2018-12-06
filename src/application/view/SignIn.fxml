@@ -15,13 +15,16 @@
    <children>
       <HBox alignment="CENTER_LEFT" maxWidth="400.0" prefHeight="45.0" prefWidth="249.0" spacing="13.0">
          <children>
-            <Label text="Choose a Project" textFill="#f78c7b">
+            <Label prefHeight="26.0" prefWidth="212.0" text="Choose a Project" textFill="#f78c7b">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
             <Separator prefHeight="3.0" prefWidth="145.0" visible="false" />
-            <JFXButton alignment="CENTER" onAction="#chooseFile" prefHeight="31.0" prefWidth="78.0" ripplerFill="WHITE" styleClass="pink-btn" text="choose file" />
+            <JFXButton alignment="CENTER" onAction="#chooseFile" prefHeight="31.0" prefWidth="91.0" ripplerFill="WHITE" styleClass="pink-btn" text="choose file">
+               <font>
+                  <Font size="10.0" />
+               </font></JFXButton>
          </children>
       </HBox>
       <TableView fx:id="fileTable" maxHeight="400.0" maxWidth="400.0" prefHeight="300.0" prefWidth="200.0">
@@ -34,7 +37,10 @@
       </TableView>
       <HBox alignment="CENTER_RIGHT" maxWidth="400.0" prefHeight="45.0" prefWidth="249.0" spacing="13.0">
          <children>
-            <JFXButton fx:id="btnNewProject" alignment="CENTER" onAction="#NewProject" prefHeight="31.0" prefWidth="121.0" ripplerFill="WHITE" styleClass="pink-btn" text="New Project" />
+            <JFXButton fx:id="btnNewProject" alignment="CENTER" onAction="#NewProject" prefHeight="31.0" prefWidth="121.0" ripplerFill="WHITE" styleClass="pink-btn" text="New Project">
+               <font>
+                  <Font size="10.0" />
+               </font></JFXButton>
             <JFXTextField fx:id="txtName" focusColor="BLACK" labelFloat="true" maxWidth="200.0" minWidth="200.0" prefHeight="31.0" prefWidth="200.0" promptText="enter project name" />
             <JFXButton fx:id="btnOK" alignment="CENTER" onAction="#Confirm" prefHeight="23.0" prefWidth="70.0" ripplerFill="WHITE" styleClass="pink-btn" text="OK">
                <font>

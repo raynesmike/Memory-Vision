@@ -1,2 +1,0 @@
-int newProject = 1;
-int *p = &newProject;

@@ -35,6 +35,12 @@ import javafx.scene.shape.Path;
 import javafx.scene.shape.StrokeLineCap;
 import javafx.scene.shape.StrokeLineJoin;
 
+/**
+ * visualizes how memory is connected
+ * @author Algorado
+ * 
+ *
+ */
 public class VNode extends StackPane {
 		
 		@FXML private StackPane root_pane;
@@ -55,6 +61,9 @@ public class VNode extends StackPane {
 
 		private final List <String> mLinkIds = new ArrayList <String> ();
 
+		/**
+		 * Constructor
+		 */
 		public VNode() {
 			
 			FXMLLoader fxmlLoader = new FXMLLoader(
@@ -77,6 +86,10 @@ public class VNode extends StackPane {
 
 		}
 		
+		/**
+		 * set-up
+		 * @return port.localToScene(Point2D.ZERO)
+		 */
 		public Point2D portCoordinates() {
 			//port.localToScene(port.layoutBounds.minX, port.layoutBounds.minY);
 			return port.localToScene(Point2D.ZERO);
@@ -85,6 +98,12 @@ public class VNode extends StackPane {
 		
 		// GETTERS & SETTERS
 		
+		/**
+		 * set-up for cubic curve
+		 * @param source VNode
+		 * @param target target
+		 * @return curve
+		 */
 		private CubicCurve createPointerLink(VNode source, VNode target) {
 			CubicCurve curve = new CubicCurve();
 			
@@ -111,7 +130,7 @@ public class VNode extends StackPane {
 		/**
 		 * Creates an arrow pointing to the pointer link's target
 		 * @param pointerLink
-		 * @return
+		 * @return arrowEnd
 		 */
 		private Path createArrowHead(CubicCurve pointerLink) {
 			double size=Math.max(pointerLink.getBoundsInLocal().getWidth(),
@@ -172,34 +191,66 @@ public class VNode extends StackPane {
 		    return p;
 		}
 
+		/**
+		 * getter method
+		 * @return btnVariable String
+		 */
 		public JFXButton getVariable() {
 			return btnVariable;
 		}
 
+		/**
+		 * setter method
+		 * @param variableName String
+		 */
 		public void setVariable(String variableName) {
 			this.btnVariable.setText(variableName);
 		}
 
+		/**
+		 * getter method
+		 * @return btnValue String
+		 */
 		public JFXButton getValue() {
 			return btnValue;
 		}
 
+		/**
+		 * setter method
+		 * @param btnValue String
+		 */
 		public void setValue(String value) {
 			btnValue.setText(value);
 		}
 
+		/**
+		 * getter method
+		 * @return btnAddress String
+		 */
 		public JFXButton getAddress() {
 			return btnAddress;
 		}
  
+		/**
+		 * setter method
+		 * @param address String
+		 */
 		public void setAddress(String address) {
 			btnAddress.setText(address);
 		}
 
+		/**
+		 * getter method
+		 * @return btnType String
+		 */
 		public JFXButton getType() {
 			return btnType;
 		}
 
+		/**
+		 * setter method
+		 * @param type String
+		 */
 		public void setType(String type) {
 			btnType.setText(type);;
 		}

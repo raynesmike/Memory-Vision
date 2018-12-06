@@ -33,7 +33,10 @@ public class C  {
     String COMMON_DEFINES[] = new String[]{"null", "MAX", "MIN", "true", "false"};
     String STANDARD_STREAMS[] = new String[]{"stdin", "stdout", "stderr"};
 
-  
+    
+    /**
+     * Generates pattern
+     */
     public Pattern generatePattern() {
         Pattern pattern;
         String KEYWORDS_PATTERN;
@@ -70,12 +73,19 @@ public class C  {
         return pattern;
     }
     
+    /**
+     * getter method
+     * @return ptrn Pattern
+     */
     public Pattern getPattern() {
 		return ptrn;
     }
   
-    
-   
+    /**
+     * CSS/Design
+     * @param matcher Matcher
+     * @return Matcher.groups
+     */
     public String getStyleClass(Matcher matcher) {
         return  matcher.group("KEYWORDS") != null ? "keywords"
                 : matcher.group("OPERATORS") != null ? "operators"
@@ -89,7 +99,10 @@ public class C  {
                 : null;
     }
 
-   
+   /**
+    * Gets keywords
+    * @return keywordList ArrayList<String>
+    */
     public ArrayList<String> getKeywords() {
         ArrayList<String> keywordList = new ArrayList<>();
         keywordList.addAll(Arrays.asList(KEYWORDS));
@@ -103,6 +116,11 @@ public class C  {
         return keywordList;
     }
     
+    /**
+     * computes Highlighting
+     * @param text String
+     * @return spansBuilder.create()
+     */
     public StyleSpans<Collection<String>> computeHighlighting(String text){
     	Pattern PATTERN = generatePattern();
     	Matcher matcher = PATTERN.matcher(text);

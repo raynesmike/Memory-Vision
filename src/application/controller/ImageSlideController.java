@@ -18,7 +18,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.layout.VBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
- public class ImageSlideController implements Initializable {
+ 
+/**
+ * 
+ * @author Algorado
+ * class helps make login slide
+ *
+ */
+public class ImageSlideController implements Initializable {
 	
 	@FXML
 	private VBox image_container;
@@ -30,6 +37,9 @@ import javafx.scene.image.ImageView;
 	int image_index = 0;
 	String images[] = new String[] {"img1.gif", "img2.gif", "img3.gif"};
 
+	/**
+	 * initialize method
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
@@ -45,7 +55,9 @@ import javafx.scene.image.ImageView;
 			e.printStackTrace();
 		}	
 	}
-	
+	/**
+	 * transfer through images
+	 */
 	@FXML
 	void nextImage() {
 		image_index++;
@@ -82,7 +94,9 @@ import javafx.scene.image.ImageView;
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * go back an image
+	 */
 	@FXML
 	void prevImage() {
 		
@@ -120,11 +134,18 @@ import javafx.scene.image.ImageView;
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * 
+	 * @param indicator FontAwesomeIcon
+	 */
 	void setCircleIcon(FontAwesomeIcon indicator) {
 		indicator.setIconName("CIRCLE");
 	}
 	
+	/**
+	 * 
+	 * @param indicator FontAwesomeIcon
+	 */
 	void resetCircleIcon(FontAwesomeIcon indicator) {
 		indicator.setIconName("CIRCLE_ALT");;
 	}

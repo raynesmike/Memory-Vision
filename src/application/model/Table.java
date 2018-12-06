@@ -28,11 +28,22 @@ public class Table {
 		this.variableList = new ArrayList<Variable>();
 	
 	}
+	/**
+	 * Constructor
+	 * @param variable String
+	 * @param value String
+	 * @param address int
+	 */
 	public Table(String variable, String value, int address) {
 		this.variable = variable;
 		this.value = value;
 		this.address = address;
 	}
+	
+	/**
+	 * For statements that modify a variable
+	 * @param s String
+	 */
 	public void modify(String s) {
 		String [] tokens = s.split(" ");
 		String variable;
@@ -153,6 +164,13 @@ public class Table {
 			}
 		}
 	}
+	
+	/**
+	 * Used for arithmetic (+ and - only)
+	 * @param use String
+	 * @param valueType int
+	 * @return total2 int
+	 */
 	public String operation(String use, int valueType){
 		System.out.println(use);
 		String tokens[] = use.split(" ");
@@ -220,6 +238,14 @@ public class Table {
 		
 	}
 	
+	/**
+	 * Helps operation in arithmetic
+	 * @param one String
+	 * @param oper String
+	 * @param two String
+	 * @param valueType int
+	 * @return value String
+	 */
 	public  String calculate(String one, String oper, String two , int valueType) {
 		String value = "";
 		String sec = "";
@@ -254,6 +280,14 @@ public class Table {
 			return value;
 	}
 	
+	/**
+	 * Classifies whether line is initializing or modifying
+	 * @param s String
+	 * @param curAdd int
+	 * @param addSize int
+	 * @param type int
+	 * @return curAdd int
+	 */
 	public int classifyLine(String s, int curAdd , int addSize, int type) {
 		//newVar = new Variable();
 		String[] words =s.split(" ");
@@ -307,6 +341,13 @@ public class Table {
 		
 	}
 	
+	/**
+	 * Assigns what pointers point to (initialization only)
+	 * @param name String
+	 * @param value String
+	 * @param amper int
+	 * @param pointer int
+	 */
 	public void pointerAssign(String name, String value, int amper, int pointer) {
 		System.out.println(value);
 		System.out.println("ENTERED");
@@ -329,7 +370,17 @@ public class Table {
 		}
 	}
 	
-	public int assignArray(String name, String val, int curAdd,int addSize, int pointer, int type) {
+	/**
+	 * method responsible for handling arrays and what they point to
+	 * @param name String
+	 * @param val String
+	 * @param curAdd int
+	 * @param addSize int
+	 * @param pointer int
+	 * @param type int
+	 * @return curAdd int
+	 */
+	public int assignArray(String name, String val, int curAdd, int addSize, int pointer, int type) {
 		
 		String varName ="";
 		String tokens[] = val.split(",");
@@ -348,46 +399,92 @@ public class Table {
 	}
 
 	/**
-	 * Setters and Getters
-	 * @return
+	 * getter method
+	 * @return variable String
 	 */
-
 	public String getVariable() {
 		return variable;
 	}
+	/**
+	 * setter method
+	 * @param variable String
+	 */
 	public void setVariable(String variable) {
 		this.variable = variable;
 	}
+	/**
+	 * getter method
+	 * @return value String
+	 */
 	public String getValue() {
 		return value;
 	}
+	/**
+	 * setter method
+	 * @param value String
+	 */
 	public void setValue(String value) {
 		this.value = value;
 	}
+	/**
+	 * getter method
+	 * @return address String
+	 */
 	public int getAddress() {
 		return address;
 	}
+	/**
+	 * setter method
+	 * @param address int
+	 */
 	public void setAddress(int address) {
 		this.address = address;
 	}
+	/**
+	 * getter method
+	 * @return variableList ArrayList<Variable>
+	 */
 	public ArrayList<Variable> getVariableList() {
 		return variableList;
 	}
+	/**
+	 * setter method
+	 * @param table ArrayList<Variable>
+	 */
 	public void setVariableList(ArrayList<Variable> table) {
 		this.variableList = table;
 	}
+	/**
+	 * getter method
+	 * @return currAddress int
+	 */
 	public int getCurrAddress() {
 		return currAddress;
 	}
+	/**
+	 * setter method
+	 * @param currAddress int
+	 */
 	public void setCurrAddress(int currAddress) {
 		this.currAddress = currAddress;
 	}
+	/**
+	 * getter method
+	 * @return startAddress int
+	 */
 	public int getStartAddress() {
 		return startAddress;
 	}
+	/**
+	 * setter method
+	 * @param startAddress int
+	 */
 	public void setStartAddress(int startAddress) {
 		this.startAddress = startAddress;
 	}
+	/**
+	 * toString
+	 */
 	public String toString() {
 		String tableString = "variable = value -- address\n";
 		for(Variable a: variableList) {

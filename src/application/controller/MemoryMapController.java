@@ -33,7 +33,6 @@ import com.jfoenix.controls.JFXDialogLayout;
 import com.jfoenix.controls.JFXToggleNode;
 
 import application.controller.components.CodeArrowFactory;
-import application.controller.components.CodeTextArea;
 import application.controller.components.PanPane;
 import application.model.C;
 import application.model.Code;
@@ -71,9 +70,9 @@ import javafx.stage.Stage;
 import com.jfoenix.controls.events.JFXDialogEvent;
 
 /**
- * 
+ * Responsible for MemoryMap.fxml
  * @author Algorado
- *
+ * 
  */
 
 public class MemoryMapController implements Initializable {
@@ -110,7 +109,6 @@ public class MemoryMapController implements Initializable {
 	private Label statusL;
 	@FXML
 	JFXToggleNode btnHelp;
-
 	@FXML
 	JFXButton nextB;
 	@FXML
@@ -135,8 +133,10 @@ public class MemoryMapController implements Initializable {
 
 	String defaultCode;
 
+	/**
+	 * Generate button
+	 */
 	public void generate() {
-		
 
 		nextB.setDisable(false);
 		generateB.setDisable(true);
@@ -154,7 +154,12 @@ public class MemoryMapController implements Initializable {
 
 	}
 	
+	/**
+	 * button with "Choose another program" is clicked, switch to signin scene
+	 * @param e ActionEvent
+	 */
 	public void anotherClicked(ActionEvent e) {
+		SignInController.filePath = "data/";
 		Parent pot;
 		try {
 			pot = FXMLLoader.load(getClass().getResource("../view/Signin.fxml"));
@@ -170,12 +175,19 @@ public class MemoryMapController implements Initializable {
 		}
 	}
 
+	/**
+	 * save button
+	 * @param event ActionEvent
+	 */
 	public void handle_save(ActionEvent event) {
 
 		save(SignInController.filePath, codeArea.getText());
 
 	}
 
+	/** 
+	 * Handles loading
+	 */
 	public void handle_load() {
 		generateB.setDisable(false);
 		nextB.setDisable(true);
@@ -195,7 +207,11 @@ public class MemoryMapController implements Initializable {
 		clear();
 
 		}
-
+	
+	/**
+	 * Dialog Button
+	 * @param event ActionEvent
+	 */
 	public void loadDialog(ActionEvent event) {
 
 		if (btnHelp.isDisable() == false) {
@@ -204,8 +220,8 @@ public class MemoryMapController implements Initializable {
 
 			JFXDialogLayout content = new JFXDialogLayout();
 			content.setHeading(new Text("User Rules"));
-			content.setBody(new Text("- Only initialization and modification statements"
-					+ "- Pointers can only be initialized, no Modifying"
+			content.setBody(new Text("- Only initialization and modification statements\n"
+					+ "- Pointers can only be initialized, no Modifying\n"
 					+ "- No functions, printf statements, File IO, etc\n" + "- NO COMMENTS!\n"
 					+ "- Single Space between words\n"
 					+ "- \"x++\" and \"x--\" must be one string (NO SPACES between them)\n" + "- NO +=, -=, *=, /=\n"
@@ -226,8 +242,8 @@ public class MemoryMapController implements Initializable {
 			
 			content.setActions(btnDone);
 
-			AnchorPane.setTopAnchor(dialogStackPane, (editor.getHeight() - content.getPrefHeight()) / 2);
-			AnchorPane.setLeftAnchor(dialogStackPane, (editor.getWidth() - content.getPrefWidth()) / 2);
+			AnchorPane.setTopAnchor(dialogStackPane, (editor.getHeight() - content.getPrefHeight()) / 3);
+			AnchorPane.setLeftAnchor(dialogStackPane, (editor.getWidth() - content.getPrefWidth()) / 3);
 			dialog.show();
 			dialog.setOnDialogClosed((JFXDialogEvent event1) -> {
 				editor.setEffect(null);
@@ -245,7 +261,9 @@ public class MemoryMapController implements Initializable {
 		}
 
 	}
-
+	/**
+	 * next button
+	 */
 	public void next() {
 		// disable user input
 		generateB.setDisable(true);
@@ -285,12 +303,17 @@ public class MemoryMapController implements Initializable {
 		}
 
 	}
+	
+	/**
+	 * clear button
+	 */
 
 	public void clear() {
 		// codeArea.clear();
 		index = 0;
 
 		codeArea.setDisable(false);
+		generateB.setDisable(false);
 
 		codeArea.setParagraphGraphicFactory(LineNumberFactory.get(codeArea));
 		code = new Code();
@@ -299,6 +322,9 @@ public class MemoryMapController implements Initializable {
 
 	}
 
+	/**
+	 * Initialize method
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
@@ -371,16 +397,27 @@ public class MemoryMapController implements Initializable {
 		handle_load();
 	}
 
+	/**
+	 * saves the code
+	 * @param filePath String
+	 * @param text String
+	 */
 	public void save(String filePath, String text) {
 
 		try {
 			write(new File(filePath), text);
 		} catch (IOException ex) {
-			Logger.getLogger(CodeTextArea.class.getName()).log(Level.SEVERE, null, ex);
+			
 		}
 
 	}
 
+	/**
+	 * writes the code
+	 * @param file File
+	 * @param text String
+	 * @throws IOException IOException
+	 */
 	private void write(File file, String text) throws IOException {
 		file.getParentFile().mkdirs();
 		try (FileWriter fw = new FileWriter(file); PrintWriter pw = new PrintWriter(fw)) {

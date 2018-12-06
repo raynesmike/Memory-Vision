@@ -29,7 +29,6 @@ import java.util.logging.Logger;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 
-import application.controller.components.CodeTextArea;
 import application.model.PopulateTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -48,7 +47,12 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 import javafx.stage.Stage;
 
-
+/**
+ * 
+ * @author Algorado
+ * Responsible for Sign In
+ *
+ */
 public class SignInController implements Initializable {
 
 	
@@ -71,6 +75,10 @@ public class SignInController implements Initializable {
 
 	public ObservableList<PopulateTable> fileList = FXCollections.observableArrayList();
 
+	/**
+	 * Helps with signIn 
+	 * @param event ActionEvent
+	 */
 	public void SignIn(ActionEvent event) {
 		
 		PopulateTable selectedFile;
@@ -90,6 +98,9 @@ public class SignInController implements Initializable {
 
 	}
 
+	/**
+	 * Initialize method
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		btnLaunch.setVisible(false);
@@ -112,6 +123,10 @@ public class SignInController implements Initializable {
 		});
 
 	}
+	
+	/**
+	 * loads files
+	 */
 	public void loadFiles() {
 		File folder = new File("data");
 		File[] fList = folder.listFiles();
@@ -126,6 +141,10 @@ public class SignInController implements Initializable {
 			}
 		}
 	}
+	/**
+	 * aids with choosing different files
+	 * @param event ActionEvent
+	 */
 	public void chooseFile(ActionEvent event) {
 
 		FileChooser fileChooser = new FileChooser();
@@ -142,6 +161,10 @@ public class SignInController implements Initializable {
 
 	}
 	
+	/**
+	 * button settings
+	 * @param event ActionEvent
+	 */
 	public void NewProject(ActionEvent event) {
 		btnOK.setVisible(true);
 		btnCancel.setVisible(true);
@@ -151,6 +174,10 @@ public class SignInController implements Initializable {
 		btnNewProject.setVisible(false);
 		
 	}
+	/**
+	 * confirm
+	 * @param event ActionEvent
+	 */
 	public void Confirm(ActionEvent event) {
 		newProjectName = txtName.getText();
 		
@@ -170,6 +197,10 @@ public class SignInController implements Initializable {
 		
 		//SignIn(event);
 	}
+	/**
+	 * Cancel
+	 * @param event ActionEvent
+	 */
 	public void Cancel(ActionEvent event) {
 		btnOK.setVisible(false);
 		btnCancel.setVisible(false);
@@ -178,20 +209,35 @@ public class SignInController implements Initializable {
 		
 		
 	}
+	/**
+	 * Helps with saving files
+	 * @param fileName String
+	 */
 	public void saveAs(String fileName) {
         File newFile = new File("data/"+fileName+".txt");
     }
 	
+	/**
+	 * Helps with save
+	 * @param filePath String
+	 * @param text String
+	 */
 	public void save(String filePath, String text) {
 
 		try {
 			write(new File(filePath), text);
 		} catch (IOException ex) {
-			Logger.getLogger(CodeTextArea.class.getName()).log(Level.SEVERE, null, ex);
+			
 		}
 
 	}
 
+	/**
+	 * helps with writing code
+	 * @param file File
+	 * @param text String
+	 * @throws IOException IOException
+	 */
 	private void write(File file, String text) throws IOException {
 		file.getParentFile().mkdirs();
 		try (FileWriter fw = new FileWriter(file); PrintWriter pw = new PrintWriter(fw)) {

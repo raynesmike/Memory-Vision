@@ -1,0 +1,8 @@
+int s = 1;
+int *p = &s;
+double y = 3.78;
+char arr[] = {'x', 'y', 'z'};
+s = 2 + 9;
+double x = 5.0;
+float boy = 3.44;
+x = 5.0 + y;
