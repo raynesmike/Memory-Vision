@@ -44,9 +44,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -66,6 +69,12 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import com.jfoenix.controls.events.JFXDialogEvent;
+
+/**
+ * 
+ * @author Algorado
+ *
+ */
 
 public class MemoryMapController implements Initializable {
 
@@ -104,7 +113,8 @@ public class MemoryMapController implements Initializable {
 
 	@FXML
 	JFXButton nextB;
-
+	@FXML
+	JFXButton anotherB;
 	@FXML
 	CodeArea codeArea;
 	@FXML
@@ -142,6 +152,22 @@ public class MemoryMapController implements Initializable {
 		line = codeString.split("\\n");
 		table.setItems(emptyTable);
 
+	}
+	
+	public void anotherClicked(ActionEvent e) {
+		Parent pot;
+		try {
+			pot = FXMLLoader.load(getClass().getResource("../view/Signin.fxml"));
+			Scene sceneW = new Scene(pot);
+			
+			Stage window = (Stage) (((Node) e.getSource()).getScene().getWindow());
+		
+			window.setScene(sceneW);
+			window.show();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 	}
 
 	public void handle_save(ActionEvent event) {
