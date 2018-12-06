@@ -1,29 +1,21 @@
 package application.controller.components;
 
 import java.io.IOException;
-import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.ListIterator;
+
 import java.util.UUID;
 
 import com.jfoenix.controls.JFXButton;
 
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.EventHandler;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Bounds;
+
 import javafx.geometry.Point2D;
-import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
+
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;

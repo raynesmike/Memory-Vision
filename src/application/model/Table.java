@@ -54,7 +54,7 @@ public class Table {
 		double currentValueD;
 		float currentValueF;
 		int flagCome = 0;
-		int flagStopAdding;
+		
 		
 		if (tokens.length == 1) {
 			variable = tokens[0];
@@ -182,7 +182,7 @@ public class Table {
 		String total = "0";
 		String arith = "";
 		String total2 = "0";
-		String total3 = "0";
+		
 		int counter = 0;
 		int counter1 = 0;
 		int counter2 = 0;
