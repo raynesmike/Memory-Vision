@@ -1,13 +1,12 @@
 # MemoryVision
 
 > Algorado - Fall 2018
-Members:
-Tyler Mitchell
-Jamal Dabas
-Michael Raynes
+> Members:
+> Tyler Mitchell
+> Jamal Dabas
+> Michael Raynes
 
 Memory Vision helps students and educators easily visualize how computer memory works in the C language by generating a custom memory map.
-
 
 ##Login
 
@@ -17,7 +16,7 @@ Memory Vision helps students and educators easily visualize how computer memory 
 
 - No X button on Mac and linux, can't close and can't resize window.
 
-- Some words on some buttons are shortened  Ex.) Varia... instead of Variable
+- Some words on some buttons are shortened Ex.) Varia... instead of Variable
 
 - If you zoom in too much (it flips it), it causes UI problems, No limit to zooming
 
@@ -25,12 +24,10 @@ Memory Vision helps students and educators easily visualize how computer memory 
 
 - The Choose file button is under construction.
 
-
-
-
 ## Dependencies
-
 
 -This project requires Java 8, it won't work with Java 10. Editing the .fxml files requires SceneBuilder 8.5.0.
 
+# Memory-Vision
 
+This is a group project for Application Programming with Tyler and Jamal that will read a C program line per line and track the variable's value including pointers
